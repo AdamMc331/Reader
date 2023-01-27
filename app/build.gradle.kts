@@ -7,7 +7,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "template.app.id"
+        applicationId = "com.adammcneilly.reader"
         minSdk = 21
         targetSdk = 33
         versionCode = 1
