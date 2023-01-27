@@ -1,6 +1,5 @@
 package com.adammcneilly.reader.ui.components
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -15,8 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.adammcneilly.reader.R
+import com.adammcneilly.reader.ui.DayNightPreview
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,15 +59,8 @@ fun SearchBar(
     )
 }
 
-@Preview(
-    name = "Day Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
-)
-@Preview(
-    name = "Night Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-)
 @Composable
+@DayNightPreview
 private fun EmptySearchBarPreview() {
     ReaderTheme {
         Surface {
@@ -80,15 +72,8 @@ private fun EmptySearchBarPreview() {
     }
 }
 
-@Preview(
-    name = "Day Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
-)
-@Preview(
-    name = "Night Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-)
 @Composable
+@DayNightPreview
 private fun FilledSearchBarPreview() {
     ReaderTheme {
         Surface {
