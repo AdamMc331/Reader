@@ -25,19 +25,6 @@ fun SearchBar(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val clearTextIcon = @Composable {
-        IconButton(
-            onClick = {
-                onValueChange.invoke("")
-            },
-        ) {
-            Icon(
-                imageVector = Icons.Default.Close,
-                contentDescription = stringResource(R.string.clear_text_content_description),
-            )
-        }
-    }
-
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
@@ -49,7 +36,20 @@ fun SearchBar(
                 contentDescription = stringResource(R.string.search_icon_content_description),
             )
         },
-        trailingIcon = clearTextIcon.takeIf { value.isEmpty() },
+        trailingIcon = {
+            if (value.isNotEmpty()) {
+                IconButton(
+                    onClick = {
+                        onValueChange.invoke("")
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Close,
+                        contentDescription = stringResource(R.string.clear_text_content_description),
+                    )
+                }
+            }
+        },
         placeholder = {
             Text(
                 text = stringResource(R.string.search_placeholder),

@@ -27,7 +27,7 @@ class SearchBarTest {
 
         composeTestRule.onNodeWithText("Search").assertIsDisplayed()
         composeTestRule.onNodeWithContentDescription("Search Icon").assertIsDisplayed()
-        composeTestRule.onNodeWithContentDescription("Clear Text").assertIsNotDisplayed()
+        composeTestRule.onNodeWithContentDescription("Clear Text").assertDoesNotExist()
     }
 
     @Test
@@ -39,7 +39,8 @@ class SearchBarTest {
             )
         }
 
-        composeTestRule.onNodeWithText("Search").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Search").assertDoesNotExist()
+        composeTestRule.onNodeWithText("The Expanse").assertIsDisplayed()
         composeTestRule.onNodeWithContentDescription("Search Icon").assertIsDisplayed()
         composeTestRule.onNodeWithContentDescription("Clear Text").assertIsDisplayed()
     }
@@ -57,7 +58,8 @@ class SearchBarTest {
             )
         }
 
-        composeTestRule.onNodeWithText("Search").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Search").assertDoesNotExist()
+        composeTestRule.onNodeWithText("The Expanse").assertIsDisplayed()
         composeTestRule.onNodeWithContentDescription("Search Icon").assertIsDisplayed()
         composeTestRule.onNodeWithContentDescription("Clear Text").assertIsDisplayed()
 
