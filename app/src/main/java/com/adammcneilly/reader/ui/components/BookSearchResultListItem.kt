@@ -1,6 +1,5 @@
 package com.adammcneilly.reader.ui.components
 
-import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Surface
