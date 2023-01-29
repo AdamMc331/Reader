@@ -23,7 +23,7 @@ class BookSearchViewModel(
     init {
         _viewState
             .map { it.searchText }
-            .debounce(300)
+            .debounce(QUERY_DEBOUNCE_MILLIS)
             .onEach {  searchText ->
                 val books = repository
                     .getBooks(searchText)
@@ -40,5 +40,14 @@ class BookSearchViewModel(
         _viewState.update {
             it.copy(searchText = newSearchText)
         }
+    }
+
+    companion object {
+        /**
+         * To avoid running a query immediately as we type, we'll debounce
+         * for a certain number of millis and only run queries when typing
+         * slows or stops.
+         */
+        private const val QUERY_DEBOUNCE_MILLIS = 300L
     }
 }
