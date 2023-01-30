@@ -55,6 +55,7 @@ fun BookDetailContent(
 @DayNightPreview
 private fun BookDetailContentPreview() {
     val displayModel = BookDisplayModel(
+        id = "1",
         title = "Leviathan Wakes",
         author = "James S.A. Corey",
     )

@@ -35,6 +35,7 @@ fun BookSearchResultListItem(
 @DayNightPreview
 private fun BookSearchResultCardPreview() {
     val displayModel = BookDisplayModel(
+        id = "1",
         title = "Leviathan Wakes",
         author = "James S.A. Corey",
     )
