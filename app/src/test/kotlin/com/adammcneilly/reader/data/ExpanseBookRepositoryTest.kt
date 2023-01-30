@@ -13,4 +13,18 @@ class ExpanseBookRepositoryTest {
 
         assertThat(bookList).isEmpty()
     }
+
+    @Test
+    fun queryWithTitleText() = runTest {
+        val bookList = repository.getBooks("Leviathan")
+
+        assertThat(bookList).hasSize(2)
+    }
+
+    @Test
+    fun queryWithAuthorText() = runTest {
+        val bookList = repository.getBooks("James S.A. Corey")
+
+        assertThat(bookList).hasSize(9)
+    }
 }
