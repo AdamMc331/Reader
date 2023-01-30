@@ -63,11 +63,12 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.android.material)
     implementation(libs.compose.material)
-    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
 
+    testImplementation(libs.google.truth)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
