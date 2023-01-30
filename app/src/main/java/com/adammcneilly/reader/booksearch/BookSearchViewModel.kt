@@ -24,7 +24,7 @@ class BookSearchViewModel(
         _viewState
             .map { it.searchText }
             .debounce(QUERY_DEBOUNCE_MILLIS)
-            .onEach {  searchText ->
+            .onEach { searchText ->
                 val books = repository
                     .getBooks(searchText)
                     .map(Book::toDisplayModel)
