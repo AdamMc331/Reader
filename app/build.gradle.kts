@@ -61,8 +61,11 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.android.material)
-    implementation(libs.compose.ui)
     implementation(libs.compose.material)
+//    implementation(libs.compose.navigation)
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
 
     testImplementation(libs.junit)
