@@ -55,8 +55,12 @@ class ExpanseBookRepository : BookRepository {
     )
 
     override suspend fun getBooks(searchText: String): List<Book> {
-        return expanseBooks.filter { book ->
-            book.title.contains(searchText) || book.author.contains(searchText)
+        return if (searchText.isEmpty()) {
+            emptyList()
+        } else {
+            expanseBooks.filter { book ->
+                book.title.contains(searchText) || book.author.contains(searchText)
+            }
         }
     }
 }
