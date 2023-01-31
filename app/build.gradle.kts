@@ -60,12 +60,15 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.android.material)
-    implementation(libs.compose.ui)
     implementation(libs.compose.material)
+    implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
 
+    testImplementation(libs.google.truth)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
