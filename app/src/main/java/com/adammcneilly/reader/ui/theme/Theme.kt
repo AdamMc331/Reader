@@ -23,8 +23,10 @@ private val lightColorScheme = lightColorScheme(
     secondary = Teal200,
 )
 
-private val spacing = Spacing(
-    verticalListSpacing = 8.dp,
+private val sizing = Sizing(
+    verticalListSpacing = 16.dp,
+    screenPadding = 16.dp,
+    listCornerRadius = 16.dp,
 )
 
 @Composable
@@ -42,7 +44,7 @@ fun ReaderTheme(
     }
 
     CompositionLocalProvider(
-        LocalSpacing provides spacing,
+        LocalSizing provides sizing,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
@@ -54,7 +56,7 @@ fun ReaderTheme(
 }
 
 object ReaderTheme {
-    val spacing: Spacing
+    val sizing: Sizing
         @Composable
-        get() = LocalSpacing.current
+        get() = LocalSizing.current
 }

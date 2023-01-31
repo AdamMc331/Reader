@@ -30,7 +30,7 @@ fun BookDetailContent(
         modifier = modifier
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(ReaderTheme.spacing.verticalListSpacing),
+        verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
     ) {
         Image(
             painter = painterResource(id = R.drawable.baseline_book_24),

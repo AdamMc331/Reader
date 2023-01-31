@@ -59,7 +59,8 @@ class ExpanseBookRepository : BookRepository {
             emptyList()
         } else {
             expanseBooks.filter { book ->
-                book.title.contains(searchText) || book.author.contains(searchText)
+                book.title.contains(searchText, true)
+                        || book.author.contains(searchText, true)
             }
         }
     }
