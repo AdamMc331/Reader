@@ -23,6 +23,7 @@ import androidx.navigation.compose.rememberNavController
 import com.adammcneilly.reader.booksearch.BookSearchScreen
 import com.adammcneilly.reader.booksearch.BookSearchViewModel
 import com.adammcneilly.reader.data.ExpanseBookRepository
+import com.adammcneilly.reader.ui.components.CenteredReaderTopBar
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -41,14 +42,7 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(
                     topBar = {
-                        CenterAlignedTopAppBar(
-                            title = {
-                                Text(
-                                    text = stringResource(id = R.string.app_name),
-                                    modifier = Modifier.statusBarsPadding(),
-                                )
-                            },
-                        )
+                        CenteredReaderTopBar()
                     },
                 ) {
                     NavHost(
