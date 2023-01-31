@@ -26,7 +26,6 @@ private val lightColorScheme = lightColorScheme(
 private val sizing = Sizing(
     verticalListSpacing = 16.dp,
     screenPadding = 16.dp,
-    listCornerRadius = 16.dp,
 )
 
 @Composable
