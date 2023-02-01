@@ -33,7 +33,7 @@ private val sizing = Sizing(
 fun ReaderTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicTheme: Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
         dynamicTheme && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
@@ -49,7 +49,7 @@ fun ReaderTheme(
             colorScheme = colorScheme,
             typography = Typography,
             shapes = Shapes,
-            content = content
+            content = content,
         )
     }
 }

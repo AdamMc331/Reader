@@ -4,7 +4,7 @@ buildscript {
         set("kotlinVersion", "1.7.10")
 
         // https://github.com/JLLeitschuh/ktlint-gradle/releases
-        set("ktlintPluginVersion", "11.0.0")
+        set("ktlintPluginVersion", "11.1.0")
 
         // https://github.com/detekt/detekt/releases
         set("detektVersion", "1.21.0")
