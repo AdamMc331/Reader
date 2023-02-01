@@ -8,7 +8,7 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
 fun BookSearchScreen(
-    viewModel: BookSearchViewModel,
+    viewModel: BookSearchViewModel = BookSearchViewModel(),
     modifier: Modifier = Modifier
 ) {
     val viewState = viewModel.viewState.collectAsState()
