@@ -4,8 +4,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryBooks
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,20 +16,20 @@ import com.adammcneilly.reader.ui.DayNightPreview
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
-fun ReaderBottomNavigation(
+fun ReaderNavigationRail(
     modifier: Modifier = Modifier
 ) {
-    NavigationBar(
+    NavigationRail(
         modifier = modifier
     ) {
-        NavigationBarItem(
+        NavigationRailItem(
             icon = { Icon(Icons.Default.Search, stringResource(id = R.string.search)) },
             label = { Text(stringResource(R.string.search)) },
             selected = true,
             onClick = { }
         )
 
-        NavigationBarItem(
+        NavigationRailItem(
             icon = { Icon(Icons.Default.LibraryBooks, stringResource(id = R.string.library)) },
             label = { Text(stringResource(R.string.library)) },
             selected = false,
@@ -40,10 +40,10 @@ fun ReaderBottomNavigation(
 
 @Composable
 @DayNightPreview
-private fun ReaderBottomNavigationPreview() {
+private fun ReaderNavigationRailPreview() {
     ReaderTheme {
         Surface {
-            ReaderBottomNavigation()
+            ReaderNavigationRail()
         }
     }
 }

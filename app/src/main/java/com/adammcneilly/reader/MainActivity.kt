@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.adammcneilly.reader.booksearch.BookSearchScreen
+import com.adammcneilly.reader.booksearch.BookSearchViewModel
 import com.adammcneilly.reader.ui.components.CenteredReaderTopBar
 import com.adammcneilly.reader.ui.components.ReaderBottomNavigation
 import com.adammcneilly.reader.ui.theme.ReaderTheme
@@ -49,7 +50,9 @@ class MainActivity : ComponentActivity() {
                             .padding(it)
                     ) {
                         composable("search") {
-                            BookSearchScreen()
+                            BookSearchScreen(
+                                viewModel = BookSearchViewModel()
+                            )
                         }
                     }
                 }
