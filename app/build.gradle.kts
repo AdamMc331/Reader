@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("org.jmailen.kotlinter")
 }
 
 android {
@@ -56,6 +57,7 @@ dependencies {
     debugImplementation(composeBom)
     androidTestImplementation(composeBom)
 
+    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
@@ -63,6 +65,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.android.material)
     implementation(libs.compose.material)
+    implementation(libs.compose.material.icons.extended)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
 

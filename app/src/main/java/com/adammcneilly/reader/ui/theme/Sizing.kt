@@ -6,12 +6,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Immutable
-data class Spacing(
+data class Sizing(
     val verticalListSpacing: Dp,
+    val screenPadding: Dp
 )
 
-val LocalSpacing = staticCompositionLocalOf {
-    Spacing(
+val LocalSizing = staticCompositionLocalOf {
+    Sizing(
         verticalListSpacing = 0.dp,
+        screenPadding = 0.dp
     )
 }

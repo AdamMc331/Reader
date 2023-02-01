@@ -4,7 +4,7 @@ buildscript {
         set("kotlinVersion", "1.7.10")
 
         // https://github.com/JLLeitschuh/ktlint-gradle/releases
-        set("ktlintPluginVersion", "11.0.0")
+        set("ktlintPluginVersion", "11.1.0")
 
         // https://github.com/detekt/detekt/releases
         set("detektVersion", "1.21.0")
@@ -31,11 +31,14 @@ buildscript {
     }
 }
 
+plugins {
+    id("org.jmailen.kotlinter") version "3.13.0" apply false
+}
+
 apply(from = "buildscripts/githooks.gradle")
 apply(from = "buildscripts/setup.gradle")
 
 subprojects {
-    apply(from = "../buildscripts/ktlint.gradle")
     apply(from = "../buildscripts/detekt.gradle")
     apply(from = "../buildscripts/versionsplugin.gradle")
 }

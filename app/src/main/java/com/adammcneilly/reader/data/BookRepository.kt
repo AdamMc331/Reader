@@ -8,6 +8,6 @@ interface BookRepository {
      * contains the supplied [searchText].
      */
     suspend fun getBooks(
-        searchText: String,
+        searchText: String
     ): List<Book>
 }
