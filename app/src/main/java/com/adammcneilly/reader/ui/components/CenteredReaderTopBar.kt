@@ -23,17 +23,17 @@ fun CenteredReaderTopBar() {
         title = {
             Text(
                 text = stringResource(id = R.string.app_name),
-                modifier = Modifier.statusBarsPadding(),
+                modifier = Modifier.statusBarsPadding()
             )
         },
         actions = {
             IconButton(onClick = { /*TODO*/ }) {
                 Icon(
                     imageVector = Icons.Default.Settings,
-                    contentDescription = stringResource(R.string.view_settings_content_description),
+                    contentDescription = stringResource(R.string.view_settings_content_description)
                 )
             }
-        },
+        }
     )
 }
 

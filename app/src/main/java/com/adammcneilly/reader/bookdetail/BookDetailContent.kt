@@ -24,29 +24,29 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 @Composable
 fun BookDetailContent(
     viewState: BookDetailViewState,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
+        verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing)
     ) {
         Image(
             painter = painterResource(id = R.drawable.baseline_book_24),
             contentDescription = stringResource(R.string.book_cover_content_description),
             modifier = Modifier.size(60.dp),
-            colorFilter = ColorFilter.tint(LocalContentColor.current),
+            colorFilter = ColorFilter.tint(LocalContentColor.current)
         )
 
         Text(
             text = viewState.book.title,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyLarge
         )
 
         Text(
             text = viewState.book.author,
-            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.bodySmall
         )
     }
 }
@@ -57,17 +57,17 @@ private fun BookDetailContentPreview() {
     val displayModel = BookDisplayModel(
         id = "1",
         title = "Leviathan Wakes",
-        author = "James S.A. Corey",
+        author = "James S.A. Corey"
     )
 
     val viewState = BookDetailViewState(
-        book = displayModel,
+        book = displayModel
     )
 
     ReaderTheme {
         Surface {
             BookDetailContent(
-                viewState = viewState,
+                viewState = viewState
             )
         }
     }

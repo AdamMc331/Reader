@@ -1,8 +1,8 @@
 package com.adammcneilly.reader.data
 
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
-import com.google.common.truth.Truth.assertThat
 
 class ExpanseBookRepositoryTest {
     private val repository = ExpanseBookRepository()

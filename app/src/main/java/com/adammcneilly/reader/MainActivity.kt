@@ -38,19 +38,19 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     topBar = {
                         CenteredReaderTopBar()
-                    },
+                    }
                 ) {
                     NavHost(
                         navController = navController,
                         startDestination = "search",
                         modifier = Modifier
-                            .padding(it),
+                            .padding(it)
                     ) {
                         composable("search") {
                             BookSearchScreen(
                                 viewModel = BookSearchViewModel(
-                                    repository = ExpanseBookRepository(),
-                                ),
+                                    repository = ExpanseBookRepository()
+                                )
                             )
                         }
                     }
@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
         SideEffect {
             systemUiController.setSystemBarsColor(
                 color = Color.Transparent,
-                darkIcons = useDarkIcons,
+                darkIcons = useDarkIcons
             )
         }
     }
