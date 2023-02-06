@@ -9,7 +9,7 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
  * Renders the supplied [content] inside a [Surface] using the [ReaderTheme].
  */
 fun ComposeContentTestRule.setReaderContent(
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     this.setContent {
         ReaderTheme {

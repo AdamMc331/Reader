@@ -9,13 +9,13 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 @Composable
 fun BookSearchScreen(
     viewModel: BookSearchViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val viewState = viewModel.viewState.collectAsState()
 
     BookSearchContent(
         viewState = viewState.value,
         onSearchTextChange = viewModel::searchTextChanged,
-        modifier = modifier.padding(ReaderTheme.sizing.screenPadding)
+        modifier = modifier.padding(ReaderTheme.sizing.screenPadding),
     )
 }

@@ -17,23 +17,23 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
 fun ReaderBottomNavigation(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     NavigationBar(
-        modifier = modifier
+        modifier = modifier,
     ) {
         NavigationBarItem(
             icon = { Icon(Icons.Default.Search, stringResource(id = R.string.search)) },
             label = { Text(stringResource(R.string.search)) },
             selected = true,
-            onClick = { }
+            onClick = { },
         )
 
         NavigationBarItem(
             icon = { Icon(Icons.Default.LibraryBooks, stringResource(id = R.string.library)) },
             label = { Text(stringResource(R.string.library)) },
             selected = false,
-            onClick = { }
+            onClick = { },
         )
     }
 }

@@ -20,7 +20,7 @@ class SearchBarTest {
         composeTestRule.setReaderContent {
             SearchBar(
                 value = "",
-                onValueChange = {}
+                onValueChange = {},
             )
         }
 
@@ -34,7 +34,7 @@ class SearchBarTest {
         composeTestRule.setReaderContent {
             SearchBar(
                 value = "The Expanse",
-                onValueChange = {}
+                onValueChange = {},
             )
         }
 
@@ -53,7 +53,7 @@ class SearchBarTest {
                 value = "The Expanse",
                 onValueChange = { newValue ->
                     latestValueChange = newValue
-                }
+                },
             )
         }
 

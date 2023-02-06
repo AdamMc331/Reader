@@ -41,17 +41,17 @@ class MainActivity : ComponentActivity() {
                     },
                     bottomBar = {
                         ReaderBottomNavigation()
-                    }
+                    },
                 ) {
                     NavHost(
                         navController = navController,
                         startDestination = "search",
                         modifier = Modifier
-                            .padding(it)
+                            .padding(it),
                     ) {
                         composable("search") {
                             BookSearchScreen(
-                                viewModel = BookSearchViewModel()
+                                viewModel = BookSearchViewModel(),
                             )
                         }
                     }
@@ -68,7 +68,7 @@ class MainActivity : ComponentActivity() {
         SideEffect {
             systemUiController.setSystemBarsColor(
                 color = Color.Transparent,
-                darkIcons = useDarkIcons
+                darkIcons = useDarkIcons,
             )
         }
     }

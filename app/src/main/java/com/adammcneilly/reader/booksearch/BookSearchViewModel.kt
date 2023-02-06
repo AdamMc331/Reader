@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 
 class BookSearchViewModel(
-    private val repository: BookRepository = ExpanseBookRepository()
+    private val repository: BookRepository = ExpanseBookRepository(),
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(BookSearchViewState())

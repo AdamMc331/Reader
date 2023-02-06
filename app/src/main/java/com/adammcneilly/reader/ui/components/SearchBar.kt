@@ -23,7 +23,7 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 fun SearchBar(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         value = value,
@@ -33,7 +33,7 @@ fun SearchBar(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = stringResource(R.string.search_icon_content_description)
+                contentDescription = stringResource(R.string.search_icon_content_description),
             )
         },
         trailingIcon = {
@@ -41,21 +41,21 @@ fun SearchBar(
                 IconButton(
                     onClick = {
                         onValueChange.invoke("")
-                    }
+                    },
                 ) {
                     Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = stringResource(R.string.clear_text_content_description)
+                        contentDescription = stringResource(R.string.clear_text_content_description),
                     )
                 }
             }
         },
         placeholder = {
             Text(
-                text = stringResource(R.string.search_placeholder)
+                text = stringResource(R.string.search_placeholder),
             )
         },
-        shape = CircleShape
+        shape = CircleShape,
     )
 }
 
@@ -66,7 +66,7 @@ private fun EmptySearchBarPreview() {
         Surface {
             SearchBar(
                 value = "",
-                onValueChange = {}
+                onValueChange = {},
             )
         }
     }
@@ -79,7 +79,7 @@ private fun FilledSearchBarPreview() {
         Surface {
             SearchBar(
                 value = "The Expanse",
-                onValueChange = {}
+                onValueChange = {},
             )
         }
     }

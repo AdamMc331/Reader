@@ -17,23 +17,23 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
 fun ReaderNavigationRail(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     NavigationRail(
-        modifier = modifier
+        modifier = modifier,
     ) {
         NavigationRailItem(
             icon = { Icon(Icons.Default.Search, stringResource(id = R.string.search)) },
             label = { Text(stringResource(R.string.search)) },
             selected = true,
-            onClick = { }
+            onClick = { },
         )
 
         NavigationRailItem(
             icon = { Icon(Icons.Default.LibraryBooks, stringResource(id = R.string.library)) },
             label = { Text(stringResource(R.string.library)) },
             selected = false,
-            onClick = { }
+            onClick = { },
         )
     }
 }

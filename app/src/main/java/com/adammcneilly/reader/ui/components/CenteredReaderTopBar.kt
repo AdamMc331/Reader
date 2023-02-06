@@ -25,13 +25,13 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 fun CenteredReaderTopBar(
     actionType: CenteredReaderTopBar.ActionType = CenteredReaderTopBar.ActionType.Icon,
     actions: List<CenteredReaderTopBar.Action> = listOf(CenteredReaderTopBar.Action.search),
-    onActionClicked: (CenteredReaderTopBar.Action) -> Unit = {}
+    onActionClicked: (CenteredReaderTopBar.Action) -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         title = {
             Text(
                 text = stringResource(id = R.string.app_name),
-                modifier = Modifier.statusBarsPadding()
+                modifier = Modifier.statusBarsPadding(),
             )
         },
         actions = {
@@ -40,22 +40,22 @@ fun CenteredReaderTopBar(
                     actionType = actionType,
                     onClick = {
                         onActionClicked.invoke(action)
-                    }
+                    },
                 )
             }
-        }
+        },
     )
 }
 
 object CenteredReaderTopBar {
     enum class ActionType {
         Text,
-        Icon
+        Icon,
     }
 
     data class Action(
         val icon: ImageVector,
-        val text: String
+        val text: String,
     ) {
 
         /**
@@ -64,28 +64,28 @@ object CenteredReaderTopBar {
         @Composable
         fun Content(
             actionType: ActionType,
-            onClick: () -> Unit
+            onClick: () -> Unit,
         ) {
             when (actionType) {
                 ActionType.Text -> {
                     TextButton(
                         onClick = onClick,
                         colors = ButtonDefaults.textButtonColors(
-                            contentColor = LocalContentColor.current
-                        )
+                            contentColor = LocalContentColor.current,
+                        ),
                     ) {
                         Text(
-                            text = this@Action.text
+                            text = this@Action.text,
                         )
                     }
                 }
                 ActionType.Icon -> {
                     IconButton(
-                        onClick = onClick
+                        onClick = onClick,
                     ) {
                         Icon(
                             imageVector = this.icon,
-                            contentDescription = this.text
+                            contentDescription = this.text,
                         )
                     }
                 }
@@ -97,7 +97,7 @@ object CenteredReaderTopBar {
                 @Composable
                 get() = Action(
                     icon = Icons.Default.Search,
-                    text = stringResource(id = R.string.search)
+                    text = stringResource(id = R.string.search),
                 )
         }
     }
@@ -109,7 +109,7 @@ private fun CenteredReaderTopBarIconActionPreview() {
     ReaderTheme {
         Surface {
             CenteredReaderTopBar(
-                actionType = CenteredReaderTopBar.ActionType.Icon
+                actionType = CenteredReaderTopBar.ActionType.Icon,
             )
         }
     }
@@ -121,7 +121,7 @@ private fun CenteredReaderTopBarTextActionPreview() {
     ReaderTheme {
         Surface {
             CenteredReaderTopBar(
-                actionType = CenteredReaderTopBar.ActionType.Text
+                actionType = CenteredReaderTopBar.ActionType.Text,
             )
         }
     }
