@@ -1,8 +1,6 @@
 package com.adammcneilly.reader.ui.components
 
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -14,9 +12,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import com.adammcneilly.reader.R
+import com.adammcneilly.reader.displaymodels.TopBarActionDisplayModel
 import com.adammcneilly.reader.ui.DayNightPreview
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 
@@ -24,8 +22,7 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 @OptIn(ExperimentalMaterial3Api::class)
 fun CenteredReaderTopBar(
     actionType: CenteredReaderTopBar.ActionType = CenteredReaderTopBar.ActionType.Icon,
-    actions: List<CenteredReaderTopBar.Action> = listOf(CenteredReaderTopBar.Action.search),
-    onActionClicked: (CenteredReaderTopBar.Action) -> Unit = {},
+    actions: List<TopBarActionDisplayModel> = emptyList(),
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -36,11 +33,10 @@ fun CenteredReaderTopBar(
         },
         actions = {
             actions.forEach { action ->
-                action.Content(
+                TopBarAction(
+                    action = action,
                     actionType = actionType,
-                    onClick = {
-                        onActionClicked.invoke(action)
-                    },
+                    onClick = action.onClick,
                 )
             }
         },
@@ -52,53 +48,36 @@ object CenteredReaderTopBar {
         Text,
         Icon,
     }
+}
 
-    data class Action(
-        val icon: ImageVector,
-        val text: String,
-    ) {
-
-        /**
-         * Renders this [Action] as either an [Icon] or [TextButton] based on the supplied [actionType].
-         */
-        @Composable
-        fun Content(
-            actionType: ActionType,
-            onClick: () -> Unit,
-        ) {
-            when (actionType) {
-                ActionType.Text -> {
-                    TextButton(
-                        onClick = onClick,
-                        colors = ButtonDefaults.textButtonColors(
-                            contentColor = LocalContentColor.current,
-                        ),
-                    ) {
-                        Text(
-                            text = this@Action.text,
-                        )
-                    }
-                }
-                ActionType.Icon -> {
-                    IconButton(
-                        onClick = onClick,
-                    ) {
-                        Icon(
-                            imageVector = this.icon,
-                            contentDescription = this.text,
-                        )
-                    }
-                }
+@Composable
+private fun TopBarAction(
+    action: TopBarActionDisplayModel,
+    actionType: CenteredReaderTopBar.ActionType,
+    onClick: () -> Unit,
+) {
+    when (actionType) {
+        CenteredReaderTopBar.ActionType.Text -> {
+            TextButton(
+                onClick = onClick,
+                colors = ButtonDefaults.textButtonColors(
+                    contentColor = LocalContentColor.current,
+                ),
+            ) {
+                Text(
+                    text = stringResource(id = action.textResource),
+                )
             }
         }
-
-        companion object {
-            val search: Action
-                @Composable
-                get() = Action(
-                    icon = Icons.Default.Search,
-                    text = stringResource(id = R.string.search),
+        CenteredReaderTopBar.ActionType.Icon -> {
+            IconButton(
+                onClick = onClick,
+            ) {
+                Icon(
+                    imageVector = action.icon,
+                    contentDescription = stringResource(id = action.textResource),
                 )
+            }
         }
     }
 }
