@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
@@ -59,7 +60,9 @@ class HomeActivity : ComponentActivity() {
                     },
                     bottomBar = {
                         if (config.navigationType == ReaderNavigationType.BOTTOM_NAVIGATION) {
-                            ReaderBottomNavigation()
+                            ReaderBottomNavigation(
+                                navigationItems = viewState.value.navigationTabs,
+                            )
                         }
                     },
                 ) {
@@ -73,13 +76,19 @@ class HomeActivity : ComponentActivity() {
 
                         NavHost(
                             navController = navController,
-                            startDestination = "search",
+                            startDestination = HomeNavigationTab.START_DESTINATION.routeKey,
                             modifier = Modifier
                                 .weight(1F),
                         ) {
-                            composable("search") {
+                            composable(HomeNavigationTab.SEARCH.routeKey) {
                                 BookSearchScreen(
                                     viewModel = BookSearchViewModel(),
+                                )
+                            }
+
+                            composable(HomeNavigationTab.LIBRARY.routeKey) {
+                                Text(
+                                    text = "Stub Library Screen",
                                 )
                             }
                         }

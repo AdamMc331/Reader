@@ -8,22 +8,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.adammcneilly.reader.displaymodels.NavigationItemDisplayModel
+import com.adammcneilly.reader.displaymodels.HomeNavigationTabDisplayModel
 import com.adammcneilly.reader.ui.DayNightPreview
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
 fun ReaderBottomNavigation(
     modifier: Modifier = Modifier,
-    navigationItems: List<NavigationItemDisplayModel> = emptyList(),
+    navigationItems: List<HomeNavigationTabDisplayModel> = emptyList(),
 ) {
     NavigationBar(
         modifier = modifier,
     ) {
         navigationItems.forEach { navigationItem ->
             NavigationBarItem(
-                icon = { Icon(navigationItem.icon, stringResource(navigationItem.labelTextRes)) },
-                label = { Text(stringResource(navigationItem.labelTextRes)) },
+                icon = { Icon(navigationItem.tab.icon, stringResource(navigationItem.tab.textRes)) },
+                label = { Text(stringResource(navigationItem.tab.textRes)) },
                 selected = navigationItem.selected,
                 onClick = navigationItem.onClick,
             )
