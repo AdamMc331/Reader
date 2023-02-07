@@ -1,4 +1,4 @@
-package com.adammcneilly.reader
+package com.adammcneilly.reader.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
@@ -23,6 +24,8 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
+    private val viewModel = MainActivityViewModel()
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,8 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
+            val viewState = viewModel.state.collectAsState()
+
             ReaderTheme {
                 SetSystemBarsTransparent()
 
@@ -37,7 +42,9 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(
                     topBar = {
-                        CenteredReaderTopBar()
+                        CenteredReaderTopBar(
+                            actions = viewState.value.topBarActions,
+                        )
                     },
                     bottomBar = {
                         ReaderBottomNavigation()

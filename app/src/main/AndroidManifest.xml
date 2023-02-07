@@ -11,7 +11,7 @@
         android:theme="@style/Theme.AppTheme">
 
         <activity
-            android:name="com.adammcneilly.reader.MainActivity"
+            android:name="com.adammcneilly.reader.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppTheme.NoActionBar">
             <intent-filter>
