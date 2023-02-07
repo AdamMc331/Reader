@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.android.material)
     implementation(libs.compose.material)
     implementation(libs.compose.material.icons.extended)
+    implementation(libs.compose.material.window)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
 

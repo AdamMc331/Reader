@@ -1,7 +1,7 @@
-package com.adammcneilly.reader.main
+package com.adammcneilly.reader.home
 
 import com.adammcneilly.reader.displaymodels.TopBarActionDisplayModel
 
-data class MainActivityViewState(
+data class HomeViewState(
     val topBarActions: List<TopBarActionDisplayModel> = emptyList(),
 )

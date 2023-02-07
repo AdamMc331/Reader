@@ -1,4 +1,4 @@
-package com.adammcneilly.reader.main
+package com.adammcneilly.reader.home
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class MainActivityViewModel : ViewModel() {
-    private val _state = MutableStateFlow(MainActivityViewState())
+class HomeViewModel : ViewModel() {
+    private val _state = MutableStateFlow(HomeViewState())
     val state = _state.asStateFlow()
 
     init {
