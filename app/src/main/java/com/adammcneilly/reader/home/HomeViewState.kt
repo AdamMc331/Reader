@@ -7,7 +7,9 @@ import com.adammcneilly.reader.displaymodels.TopBarActionDisplayModel
  *
  * @property[topBarActions] A list of [TopBarActionDisplayModel] entities which are rendered in the top bar
  * of the home screen.
+ * @property[selectedTab] The [HomeNavigationTab] that is currently being viewed by the user.
  */
 data class HomeViewState(
     val topBarActions: List<TopBarActionDisplayModel> = emptyList(),
+    val selectedTab: HomeNavigationTab = HomeNavigationTab.LIBRARY,
 )
