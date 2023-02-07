@@ -16,12 +16,13 @@ import androidx.compose.ui.res.stringResource
 import com.adammcneilly.reader.R
 import com.adammcneilly.reader.displaymodels.TopBarActionDisplayModel
 import com.adammcneilly.reader.ui.DayNightPreview
+import com.adammcneilly.reader.ui.TopBarActionType
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun CenteredReaderTopBar(
-    actionType: CenteredReaderTopBar.ActionType = CenteredReaderTopBar.ActionType.Icon,
+    actionType: TopBarActionType = TopBarActionType.ICON,
     actions: List<TopBarActionDisplayModel> = emptyList(),
 ) {
     CenterAlignedTopAppBar(
@@ -43,21 +44,14 @@ fun CenteredReaderTopBar(
     )
 }
 
-object CenteredReaderTopBar {
-    enum class ActionType {
-        Text,
-        Icon,
-    }
-}
-
 @Composable
 private fun TopBarAction(
     action: TopBarActionDisplayModel,
-    actionType: CenteredReaderTopBar.ActionType,
+    actionType: TopBarActionType,
     onClick: () -> Unit,
 ) {
     when (actionType) {
-        CenteredReaderTopBar.ActionType.Text -> {
+        TopBarActionType.TEXT -> {
             TextButton(
                 onClick = onClick,
                 colors = ButtonDefaults.textButtonColors(
@@ -69,7 +63,7 @@ private fun TopBarAction(
                 )
             }
         }
-        CenteredReaderTopBar.ActionType.Icon -> {
+        TopBarActionType.ICON -> {
             IconButton(
                 onClick = onClick,
             ) {
@@ -88,7 +82,7 @@ private fun CenteredReaderTopBarIconActionPreview() {
     ReaderTheme {
         Surface {
             CenteredReaderTopBar(
-                actionType = CenteredReaderTopBar.ActionType.Icon,
+                actionType = TopBarActionType.ICON,
             )
         }
     }
@@ -100,7 +94,7 @@ private fun CenteredReaderTopBarTextActionPreview() {
     ReaderTheme {
         Surface {
             CenteredReaderTopBar(
-                actionType = CenteredReaderTopBar.ActionType.Text,
+                actionType = TopBarActionType.TEXT,
             )
         }
     }
