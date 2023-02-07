@@ -14,6 +14,11 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 
+/**
+ * A state management container for the book search screen.
+ *
+ * @property[repository] A [BookRepository] data source that is used to request books as we search for them.
+ */
 class BookSearchViewModel(
     private val repository: BookRepository = ExpanseBookRepository(),
 ) : ViewModel() {
@@ -27,7 +32,7 @@ class BookSearchViewModel(
             .debounce(QUERY_DEBOUNCE_MILLIS)
             .onEach { searchText ->
                 val books = repository
-                    .getBooks(searchText)
+                    .searchBooks(searchText)
                     .map(Book::toDisplayModel)
 
                 _viewState.update {

@@ -28,6 +28,9 @@ import com.adammcneilly.reader.ui.components.ReaderNavigationRail
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
+/**
+ * This activity is the main entry point to the reader application, displaying the home screen for the user.
+ */
 class HomeActivity : ComponentActivity() {
     private val viewModel = HomeViewModel()
 

@@ -54,7 +54,7 @@ class ExpanseBookRepository : BookRepository {
         ),
     )
 
-    override suspend fun getBooks(searchText: String): List<Book> {
+    override suspend fun searchBooks(searchText: String): List<Book> {
         return if (searchText.isEmpty()) {
             emptyList()
         } else {
