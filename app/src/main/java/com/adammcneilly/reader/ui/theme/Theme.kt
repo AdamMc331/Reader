@@ -15,17 +15,17 @@ import androidx.compose.ui.unit.dp
 
 private val darkColorScheme = darkColorScheme(
     primary = Purple200,
-    secondary = Teal200
+    secondary = Teal200,
 )
 
 private val lightColorScheme = lightColorScheme(
     primary = Purple500,
-    secondary = Teal200
+    secondary = Teal200,
 )
 
 private val sizing = Sizing(
     verticalListSpacing = 16.dp,
-    screenPadding = 16.dp
+    screenPadding = 16.dp,
 )
 
 @Composable
@@ -33,7 +33,7 @@ private val sizing = Sizing(
 fun ReaderTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicTheme: Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
         dynamicTheme && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
@@ -43,13 +43,13 @@ fun ReaderTheme(
     }
 
     CompositionLocalProvider(
-        LocalSizing provides sizing
+        LocalSizing provides sizing,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = Typography,
             shapes = Shapes,
-            content = content
+            content = content,
         )
     }
 }

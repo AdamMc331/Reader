@@ -14,20 +14,20 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 @Composable
 fun BookSearchResultListItem(
     displayModel: BookDisplayModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     ListItem(
         modifier = modifier,
         headlineText = {
             Text(
-                text = displayModel.title
+                text = displayModel.title,
             )
         },
         supportingText = {
             Text(
-                text = displayModel.author
+                text = displayModel.author,
             )
-        }
+        },
     )
 }
 
@@ -37,13 +37,13 @@ private fun BookSearchResultCardPreview() {
     val displayModel = BookDisplayModel(
         id = "1",
         title = "Leviathan Wakes",
-        author = "James S.A. Corey"
+        author = "James S.A. Corey",
     )
 
     ReaderTheme {
         Surface {
             BookSearchResultListItem(
-                displayModel = displayModel
+                displayModel = displayModel,
             )
         }
     }

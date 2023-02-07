@@ -1,4 +1,4 @@
-package com.adammcneilly.reader
+package com.adammcneilly.reader.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
@@ -17,12 +18,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.adammcneilly.reader.booksearch.BookSearchScreen
 import com.adammcneilly.reader.booksearch.BookSearchViewModel
-import com.adammcneilly.reader.data.ExpanseBookRepository
 import com.adammcneilly.reader.ui.components.CenteredReaderTopBar
+import com.adammcneilly.reader.ui.components.ReaderBottomNavigation
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
+    private val viewModel = MainActivityViewModel()
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,8 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
+            val viewState = viewModel.state.collectAsState()
+
             ReaderTheme {
                 SetSystemBarsTransparent()
 
@@ -37,20 +42,23 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(
                     topBar = {
-                        CenteredReaderTopBar()
-                    }
+                        CenteredReaderTopBar(
+                            actions = viewState.value.topBarActions,
+                        )
+                    },
+                    bottomBar = {
+                        ReaderBottomNavigation()
+                    },
                 ) {
                     NavHost(
                         navController = navController,
                         startDestination = "search",
                         modifier = Modifier
-                            .padding(it)
+                            .padding(it),
                     ) {
                         composable("search") {
                             BookSearchScreen(
-                                viewModel = BookSearchViewModel(
-                                    repository = ExpanseBookRepository()
-                                )
+                                viewModel = BookSearchViewModel(),
                             )
                         }
                     }
@@ -67,7 +75,7 @@ class MainActivity : ComponentActivity() {
         SideEffect {
             systemUiController.setSystemBarsColor(
                 color = Color.Transparent,
-                darkIcons = useDarkIcons
+                darkIcons = useDarkIcons,
             )
         }
     }

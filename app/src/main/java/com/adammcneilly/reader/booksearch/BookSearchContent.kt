@@ -18,22 +18,22 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 fun BookSearchContent(
     viewState: BookSearchViewState,
     onSearchTextChange: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing)
+        verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
     ) {
         SearchBar(
             value = viewState.searchText,
-            onValueChange = onSearchTextChange
+            onValueChange = onSearchTextChange,
         )
 
         if (viewState.results.isNotEmpty()) {
             LazyColumn {
                 itemsIndexed(viewState.results) { index, displayModel ->
                     BookSearchResultListItem(
-                        displayModel = displayModel
+                        displayModel = displayModel,
                     )
 
                     if (index != viewState.results.lastIndex) {
@@ -50,14 +50,14 @@ fun BookSearchContent(
 private fun InitialBookSearchContentPreview() {
     val viewState = BookSearchViewState(
         searchText = "",
-        results = emptyList()
+        results = emptyList(),
     )
 
     ReaderTheme {
         Surface {
             BookSearchContent(
                 viewState = viewState,
-                onSearchTextChange = {}
+                onSearchTextChange = {},
             )
         }
     }
@@ -72,26 +72,26 @@ private fun ActiveBookSearchContentPreview() {
             BookDisplayModel(
                 id = "1",
                 title = "Leviathan Wakes",
-                author = "James S.A. Corey"
+                author = "James S.A. Corey",
             ),
             BookDisplayModel(
                 id = "2",
                 title = "Caliban's War",
-                author = "James S.A. Corey"
+                author = "James S.A. Corey",
             ),
             BookDisplayModel(
                 id = "3",
                 title = "Abaddon's Gate",
-                author = "James S.A. Corey"
-            )
-        )
+                author = "James S.A. Corey",
+            ),
+        ),
     )
 
     ReaderTheme {
         Surface {
             BookSearchContent(
                 viewState = viewState,
-                onSearchTextChange = {}
+                onSearchTextChange = {},
             )
         }
     }

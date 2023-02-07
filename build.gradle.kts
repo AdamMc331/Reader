@@ -20,7 +20,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.4.0")
+        classpath("com.android.tools.build:gradle:7.4.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.extra.get("kotlinVersion")}")
         classpath("org.jlleitschuh.gradle:ktlint-gradle:${rootProject.extra.get("ktlintPluginVersion")}")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${rootProject.extra.get("detektVersion")}")
