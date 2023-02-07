@@ -5,6 +5,9 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * Defines custom sizing properties to be used in a [ReaderTheme] entity.
+ */
 @Immutable
 data class Sizing(
     val verticalListSpacing: Dp,

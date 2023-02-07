@@ -54,6 +54,10 @@ fun ReaderTheme(
     }
 }
 
+/**
+ * A custom theme object which contains local providers specific to ways the Reader app wants to expand
+ * upon the built in [MaterialTheme].
+ */
 object ReaderTheme {
     val sizing: Sizing
         @Composable
