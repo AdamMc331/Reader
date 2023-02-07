@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
@@ -46,37 +45,17 @@ class HomeActivity : ComponentActivity() {
 
                 val windowSize = calculateWindowSizeClass(this)
                 val navController = rememberNavController()
-                val navigationType: ReaderNavigationType
-                val topBarActionType: CenteredReaderTopBar.ActionType
-
-                when (windowSize.widthSizeClass) {
-                    WindowWidthSizeClass.Compact -> {
-                        navigationType = ReaderNavigationType.BOTTOM_NAVIGATION
-                        topBarActionType = CenteredReaderTopBar.ActionType.Icon
-                    }
-                    WindowWidthSizeClass.Medium -> {
-                        navigationType = ReaderNavigationType.NAVIGATION_RAIL
-                        topBarActionType = CenteredReaderTopBar.ActionType.Text
-                    }
-                    WindowWidthSizeClass.Expanded -> {
-                        navigationType = ReaderNavigationType.NAVIGATION_RAIL
-                        topBarActionType = CenteredReaderTopBar.ActionType.Text
-                    }
-                    else -> {
-                        navigationType = ReaderNavigationType.BOTTOM_NAVIGATION
-                        topBarActionType = CenteredReaderTopBar.ActionType.Icon
-                    }
-                }
+                val config = HomeConfig.fromWindowSize(windowSize)
 
                 Scaffold(
                     topBar = {
                         CenteredReaderTopBar(
                             actions = viewState.value.topBarActions,
-                            actionType = topBarActionType,
+                            actionType = config.appBarActionType,
                         )
                     },
                     bottomBar = {
-                        if (navigationType == ReaderNavigationType.BOTTOM_NAVIGATION) {
+                        if (config.navigationType == ReaderNavigationType.BOTTOM_NAVIGATION) {
                             ReaderBottomNavigation()
                         }
                     },
@@ -85,7 +64,7 @@ class HomeActivity : ComponentActivity() {
                         Modifier
                             .padding(it),
                     ) {
-                        if (navigationType == ReaderNavigationType.NAVIGATION_RAIL) {
+                        if (config.navigationType == ReaderNavigationType.NAVIGATION_RAIL) {
                             ReaderNavigationRail()
                         }
 
