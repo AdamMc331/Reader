@@ -71,6 +71,8 @@ dependencies {
     implementation(libs.compose.material.window)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
 
     testImplementation(libs.google.truth)
     testImplementation(libs.junit)
@@ -83,7 +85,5 @@ dependencies {
     debugImplementation(libs.compose.ui.test.manifest)
     debugImplementation(libs.compose.ui.tooling)
 
-    implementation("com.google.dagger:hilt-android:2.44.2")
-    kapt("com.google.dagger:hilt-compiler:2.44.2")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    kapt(libs.hilt.compiler)
 }
