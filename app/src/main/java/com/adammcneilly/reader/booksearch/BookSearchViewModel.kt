@@ -3,9 +3,9 @@ package com.adammcneilly.reader.booksearch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.reader.data.BookRepository
-import com.adammcneilly.reader.data.ExpanseBookRepository
 import com.adammcneilly.reader.displaymodels.toDisplayModel
 import com.adammcneilly.reader.models.Book
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
@@ -13,14 +13,16 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
 /**
  * A state management container for the book search screen.
  *
  * @property[repository] A [BookRepository] data source that is used to request books as we search for them.
  */
-class BookSearchViewModel(
-    private val repository: BookRepository = ExpanseBookRepository(),
+@HiltViewModel
+class BookSearchViewModel @Inject constructor(
+    private val repository: BookRepository,
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(BookSearchViewState())

@@ -1,7 +1,9 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
     id("org.jmailen.kotlinter")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -69,6 +71,8 @@ dependencies {
     implementation(libs.compose.material.window)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
 
     testImplementation(libs.google.truth)
     testImplementation(libs.junit)
@@ -80,4 +84,6 @@ dependencies {
 
     debugImplementation(libs.compose.ui.test.manifest)
     debugImplementation(libs.compose.ui.tooling)
+
+    kapt(libs.hilt.compiler)
 }
