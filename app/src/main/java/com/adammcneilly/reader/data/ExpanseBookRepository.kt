@@ -6,6 +6,7 @@ import javax.inject.Inject
 /**
  * A custom implementation of [BookRepository] that will be used for demo purposes.
  */
+@Suppress("MaxLineLength")
 class ExpanseBookRepository @Inject constructor() : BookRepository {
     private val expanseBooks = listOf(
         Book(
