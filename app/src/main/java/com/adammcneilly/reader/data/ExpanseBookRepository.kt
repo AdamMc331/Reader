@@ -37,7 +37,7 @@ class ExpanseBookRepository @Inject constructor() : BookRepository {
             id = "5",
             title = "Nemesis Games",
             author = "James S.A. Corey",
-            thumbnailURL = "https://books.google.com/books/content?id=yud-foXqGUEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+            thumbnailURL = "https://books.google.com/books/content?id=A_-zBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
         ),
         Book(
             id = "6",
@@ -76,7 +76,7 @@ class ExpanseBookRepository @Inject constructor() : BookRepository {
     }
 
     override suspend fun getBooksInLibrary(): List<Book> {
-        val ownedIds = listOf("1", "2", "3", "4")
+        val ownedIds = listOf("1", "2", "3", "4", "5")
 
         return expanseBooks.filter { book ->
             ownedIds.contains(book.id)

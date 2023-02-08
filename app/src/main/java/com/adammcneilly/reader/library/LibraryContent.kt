@@ -9,8 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 
-private const val LIBRARY_GRID_COLUMNS = 2
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LibraryContent(
@@ -18,7 +16,9 @@ fun LibraryContent(
     modifier: Modifier = Modifier,
 ) {
     LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Fixed(LIBRARY_GRID_COLUMNS),
+        columns = StaggeredGridCells.Adaptive(
+            minSize = ReaderTheme.sizing.listItemMinWidth,
+        ),
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
         horizontalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),

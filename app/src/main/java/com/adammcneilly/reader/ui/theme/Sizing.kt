@@ -13,6 +13,7 @@ data class Sizing(
     val verticalListSpacing: Dp,
     val screenPadding: Dp,
     val listItemPadding: Dp,
+    val listItemMinWidth: Dp,
 )
 
 val LocalSizing = staticCompositionLocalOf {
@@ -20,5 +21,6 @@ val LocalSizing = staticCompositionLocalOf {
         verticalListSpacing = 0.dp,
         screenPadding = 0.dp,
         listItemPadding = 0.dp,
+        listItemMinWidth = 0.dp,
     )
 }
