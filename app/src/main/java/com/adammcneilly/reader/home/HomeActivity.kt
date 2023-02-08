@@ -3,28 +3,16 @@ package com.adammcneilly.reader.home
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.adammcneilly.reader.booksearch.BookSearchScreen
-import com.adammcneilly.reader.booksearch.BookSearchViewModel
-import com.adammcneilly.reader.ui.ReaderNavigationType
-import com.adammcneilly.reader.ui.components.CenteredReaderTopBar
-import com.adammcneilly.reader.ui.components.ReaderBottomNavigation
-import com.adammcneilly.reader.ui.components.ReaderNavigationRail
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -32,9 +20,9 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
  * This activity is the main entry point to the reader application, displaying the home screen for the user.
  */
 class HomeActivity : ComponentActivity() {
-    private val viewModel = HomeViewModel()
+    private val viewModel: HomeViewModel by viewModels()
 
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3WindowSizeClassApi::class)
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,41 +38,13 @@ class HomeActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val config = HomeConfig.fromWindowSize(windowSize)
 
-                Scaffold(
-                    topBar = {
-                        CenteredReaderTopBar(
-                            actions = viewState.value.topBarActions,
-                            actionType = config.appBarActionType,
-                        )
-                    },
-                    bottomBar = {
-                        if (config.navigationType == ReaderNavigationType.BOTTOM_NAVIGATION) {
-                            ReaderBottomNavigation()
-                        }
-                    },
-                ) {
-                    Row(
-                        Modifier
-                            .padding(it),
-                    ) {
-                        if (config.navigationType == ReaderNavigationType.NAVIGATION_RAIL) {
-                            ReaderNavigationRail()
-                        }
+                viewState.value.selectedTab?.run {
+                    navController.navigate(this.routeKey)
 
-                        NavHost(
-                            navController = navController,
-                            startDestination = "search",
-                            modifier = Modifier
-                                .weight(1F),
-                        ) {
-                            composable("search") {
-                                BookSearchScreen(
-                                    viewModel = BookSearchViewModel(),
-                                )
-                            }
-                        }
-                    }
+                    viewModel.clearSelectedTab()
                 }
+
+                HomeScaffold(viewState, config, navController)
             }
         }
     }
