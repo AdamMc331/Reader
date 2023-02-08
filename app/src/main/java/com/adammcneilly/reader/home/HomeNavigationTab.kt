@@ -15,19 +15,19 @@ enum class HomeNavigationTab(
     val textRes: Int,
     val routeKey: String,
 ) {
-    SEARCH(
-        icon = Icons.Default.Search,
-        textRes = R.string.search,
-        routeKey = "search",
-    ),
     LIBRARY(
         icon = Icons.Default.LibraryBooks,
         textRes = R.string.library,
         routeKey = "library",
     ),
+    SEARCH(
+        icon = Icons.Default.Search,
+        textRes = R.string.search,
+        routeKey = "search",
+    ),
     ;
 
     companion object {
-        val START_DESTINATION = SEARCH
+        val START_DESTINATION = LIBRARY
     }
 }

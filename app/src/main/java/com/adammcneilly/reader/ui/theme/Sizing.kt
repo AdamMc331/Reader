@@ -12,11 +12,13 @@ import androidx.compose.ui.unit.dp
 data class Sizing(
     val verticalListSpacing: Dp,
     val screenPadding: Dp,
+    val listItemPadding: Dp,
 )
 
 val LocalSizing = staticCompositionLocalOf {
     Sizing(
         verticalListSpacing = 0.dp,
         screenPadding = 0.dp,
+        listItemPadding = 0.dp,
     )
 }
