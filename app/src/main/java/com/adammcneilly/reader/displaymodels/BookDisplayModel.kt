@@ -11,6 +11,7 @@ data class BookDisplayModel(
     val id: String,
     val title: String,
     val author: String,
+    val thumbnailURL: String?,
 )
 
 fun Book.toDisplayModel(): BookDisplayModel {
@@ -18,5 +19,6 @@ fun Book.toDisplayModel(): BookDisplayModel {
         id = this.id,
         title = this.title,
         author = this.author,
+        thumbnailURL = this.thumbnailURL,
     )
 }

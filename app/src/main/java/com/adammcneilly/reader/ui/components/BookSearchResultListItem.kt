@@ -38,6 +38,7 @@ private fun BookSearchResultCardPreview() {
         id = "1",
         title = "Leviathan Wakes",
         author = "James S.A. Corey",
+        thumbnailURL = null,
     )
 
     ReaderTheme {

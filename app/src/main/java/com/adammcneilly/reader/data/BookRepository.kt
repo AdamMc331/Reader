@@ -13,4 +13,10 @@ interface BookRepository {
     suspend fun searchBooks(
         searchText: String,
     ): List<Book>
+
+    /**
+     * Retrieves a list of [Book] entities that are part of the user's library
+     * (either read, or to be read).
+     */
+    suspend fun getBooksInLibrary(): List<Book>
 }
