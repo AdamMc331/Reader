@@ -15,10 +15,12 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * This activity is the main entry point to the reader application, displaying the home screen for the user.
  */
+@AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
     private val viewModel: HomeViewModel by viewModels()
 

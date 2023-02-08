@@ -33,6 +33,7 @@ buildscript {
 
 plugins {
     id("org.jmailen.kotlinter") version "3.13.0" apply false
+    id("com.google.dagger.hilt.android") version "2.44.2" apply false
 }
 
 apply(from = "buildscripts/githooks.gradle")

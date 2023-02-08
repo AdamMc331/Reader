@@ -1,11 +1,12 @@
 package com.adammcneilly.reader.data
 
 import com.adammcneilly.reader.models.Book
+import javax.inject.Inject
 
 /**
  * A custom implementation of [BookRepository] that will be used for demo purposes.
  */
-class ExpanseBookRepository : BookRepository {
+class ExpanseBookRepository @Inject constructor() : BookRepository {
     private val expanseBooks = listOf(
         Book(
             id = "1",

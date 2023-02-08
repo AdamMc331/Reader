@@ -7,7 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.adammcneilly.reader.booksearch.BookSearchScreen
-import com.adammcneilly.reader.booksearch.BookSearchViewModel
 
 @Composable
 fun HomeNavHost(
@@ -20,9 +19,7 @@ fun HomeNavHost(
         modifier = modifier,
     ) {
         composable(HomeNavigationTab.SEARCH.routeKey) {
-            BookSearchScreen(
-                viewModel = BookSearchViewModel(),
-            )
+            BookSearchScreen()
         }
 
         composable(HomeNavigationTab.LIBRARY.routeKey) {
