@@ -14,6 +14,8 @@ import coil.compose.AsyncImage
 import com.adammcneilly.reader.displaymodels.BookDisplayModel
 import com.adammcneilly.reader.ui.theme.ReaderTheme
 
+private const val IMAGE_ASPECT_RATIO = 0.75F
+
 @Composable
 fun LibraryBookListItem(
     displayModel: BookDisplayModel,
@@ -27,7 +29,7 @@ fun LibraryBookListItem(
             contentDescription = "${displayModel.title} Cover",
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(0.75F),
+                .aspectRatio(IMAGE_ASPECT_RATIO),
             contentScale = ContentScale.Crop,
         )
 
