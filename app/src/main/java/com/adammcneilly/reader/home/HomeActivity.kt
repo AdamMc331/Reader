@@ -3,6 +3,7 @@ package com.adammcneilly.reader.home
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -33,7 +34,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
  * This activity is the main entry point to the reader application, displaying the home screen for the user.
  */
 class HomeActivity : ComponentActivity() {
-    private val viewModel = HomeViewModel()
+    private val viewModel: HomeViewModel by viewModels()
 
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +51,12 @@ class HomeActivity : ComponentActivity() {
                 val windowSize = calculateWindowSizeClass(this)
                 val navController = rememberNavController()
                 val config = HomeConfig.fromWindowSize(windowSize)
+
+                viewState.value.selectedTab?.run {
+                    navController.navigate(this.routeKey)
+
+                    viewModel.clearSelectedTab()
+                }
 
                 Scaffold(
                     topBar = {
@@ -71,7 +78,9 @@ class HomeActivity : ComponentActivity() {
                             .padding(it),
                     ) {
                         if (config.navigationType == ReaderNavigationType.NAVIGATION_RAIL) {
-                            ReaderNavigationRail()
+                            ReaderNavigationRail(
+                                navigationItems = viewState.value.navigationTabs,
+                            )
                         }
 
                         NavHost(

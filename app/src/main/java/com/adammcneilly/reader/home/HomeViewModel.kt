@@ -66,6 +66,15 @@ class HomeViewModel : ViewModel() {
 
             currentState.copy(
                 navigationTabs = updatedTabs,
+                selectedTab = newTab,
+            )
+        }
+    }
+
+    fun clearSelectedTab() {
+        _state.update { currentState ->
+            currentState.copy(
+                selectedTab = null,
             )
         }
     }
