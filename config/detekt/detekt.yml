@@ -68,6 +68,7 @@ comments:
     searchInInnerClass: true
     searchInInnerObject: true
     searchInInnerInterface: true
+    excludes: ['**/googlebooks/models/**']
   UndocumentedPublicFunction:
     active: false
   UndocumentedPublicProperty:

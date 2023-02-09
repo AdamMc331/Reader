@@ -6,6 +6,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
+/**
+ * A hilt [Module] that defines any various remote APIs that are used in the Reader app.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object APIModule {

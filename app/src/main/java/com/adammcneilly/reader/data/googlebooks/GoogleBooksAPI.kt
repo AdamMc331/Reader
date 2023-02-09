@@ -10,6 +10,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * A retrofit implementation of a network API to talk to Google Books.
+ */
 interface GoogleBooksAPI {
 
     @GET("/books/v1/volumes/")

@@ -4,10 +4,15 @@ import com.adammcneilly.reader.data.BookRepository
 import com.adammcneilly.reader.models.Book
 import javax.inject.Inject
 
+/**
+ * A concrete implementation of a [BookRepository] that requests information
+ * from the supplies [api].
+ */
 class GoogleBooksBookRepository @Inject constructor(
     private val api: GoogleBooksAPI,
 ) : BookRepository {
 
+    @Suppress("TooGenericExceptionCaught, SwallowedException")
     override suspend fun searchBooks(searchText: String): List<Book> {
         return try {
             val apiResult = api.search(searchText)
@@ -22,7 +27,7 @@ class GoogleBooksBookRepository @Inject constructor(
             }
                 .orEmpty()
         } catch (e: Exception) {
-            e.printStackTrace()
+            // Report this error
             emptyList()
         }
     }
