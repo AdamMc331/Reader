@@ -74,6 +74,10 @@ dependencies {
     implementation(libs.compose.ui.tooling)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation(libs.square.retrofit)
+    implementation(libs.square.retrofit.moshi)
 
     testImplementation(libs.google.truth)
     testImplementation(libs.junit)
