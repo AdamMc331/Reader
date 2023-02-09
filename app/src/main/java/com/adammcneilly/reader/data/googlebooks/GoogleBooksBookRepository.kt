@@ -12,7 +12,7 @@ class GoogleBooksBookRepository @Inject constructor(
     private val api: GoogleBooksAPI,
 ) : BookRepository {
 
-    @Suppress("TooGenericExceptionCaught, SwallowedException")
+    @Suppress("TooGenericExceptionCaught", "SwallowedException")
     override suspend fun searchBooks(searchText: String): List<Book> {
         return try {
             val apiResult = api.search(searchText)
