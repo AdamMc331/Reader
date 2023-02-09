@@ -3,6 +3,7 @@ accompanist = "0.29.1-alpha"
 activityCompose = "1.6.1"
 androidxTest = "1.1.5"
 appCompat = "1.6.0"
+coil = "2.2.2"
 composeBom = "2023.01.00"
 coroutines = "1.6.4"
 espresso = "3.5.1"
@@ -25,6 +26,7 @@ androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtim
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTest" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 compose-material = { group = "androidx.compose.material3", name = "material3" }

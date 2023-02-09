@@ -27,6 +27,7 @@ private val sizing = Sizing(
     verticalListSpacing = 16.dp,
     screenPadding = 16.dp,
     listItemPadding = 16.dp,
+    listItemMinWidth = 160.dp,
 )
 
 @Composable
