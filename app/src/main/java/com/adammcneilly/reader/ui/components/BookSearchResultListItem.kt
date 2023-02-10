@@ -1,8 +1,8 @@
 package com.adammcneilly.reader.ui.components
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
@@ -16,6 +16,7 @@ import coil.compose.SubcomposeAsyncImage
 import com.adammcneilly.reader.displaymodels.BookDisplayModel
 import com.adammcneilly.reader.ui.DayNightPreview
 import com.adammcneilly.reader.ui.theme.ReaderTheme
+import com.google.accompanist.placeholder.material3.placeholder
 
 private const val IMAGE_ASPECT_RATIO = 0.70F
 
@@ -47,10 +48,25 @@ fun BookSearchResultListItem(
                     .aspectRatio(IMAGE_ASPECT_RATIO)
                     .clip(MaterialTheme.shapes.small),
                 loading = {
-                    CircularProgressIndicator()
+                    ImagePlaceholder()
+                },
+                error = {
+                    ImagePlaceholder()
                 },
             )
         },
+    )
+}
+
+@Composable
+private fun ImagePlaceholder(
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .placeholder(
+                visible = true,
+            ),
     )
 }
 
