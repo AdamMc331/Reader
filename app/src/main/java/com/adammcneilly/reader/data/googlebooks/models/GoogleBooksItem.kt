@@ -1,5 +1,6 @@
 package com.adammcneilly.reader.data.googlebooks.models
 
+import com.adammcneilly.reader.models.Book
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -21,4 +22,18 @@ data class GoogleBooksItem(
     val selfLink: String? = "",
     @Json(name = "volumeInfo")
     val volumeInfo: GoogleBooksVolumeInfo? = GoogleBooksVolumeInfo(),
-)
+) {
+    fun toBook(): Book {
+        requireNotNull(this.id)
+        requireNotNull(this.volumeInfo)
+        requireNotNull(this.volumeInfo.title)
+        requireNotNull(this.volumeInfo.authors)
+
+        return Book(
+            id = this.id,
+            title = this.volumeInfo.title,
+            author = this.volumeInfo.authors.joinToString(),
+            thumbnailURL = this.volumeInfo.imageLinks?.thumbnail?.replace("http", "https"),
+        )
+    }
+}

@@ -1,6 +1,7 @@
 package com.adammcneilly.reader.data.googlebooks
 
 import com.adammcneilly.reader.data.BookRepository
+import com.adammcneilly.reader.data.googlebooks.models.GoogleBooksItem
 import com.adammcneilly.reader.models.Book
 import javax.inject.Inject
 
@@ -17,15 +18,7 @@ class GoogleBooksBookRepository @Inject constructor(
         return try {
             val apiResult = api.search(searchText)
 
-            apiResult.items?.map { booksItem ->
-                Book(
-                    id = booksItem.id.orEmpty(),
-                    title = booksItem.volumeInfo?.title.orEmpty(),
-                    author = booksItem.volumeInfo?.authors?.joinToString().orEmpty(),
-                    thumbnailURL = booksItem.volumeInfo?.imageLinks?.thumbnail,
-                )
-            }
-                .orEmpty()
+            apiResult.items?.map(GoogleBooksItem::toBook).orEmpty()
         } catch (e: Exception) {
             // Report this error
             emptyList()

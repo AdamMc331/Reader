@@ -1,14 +1,22 @@
 package com.adammcneilly.reader.ui.components
 
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
 import com.adammcneilly.reader.displaymodels.BookDisplayModel
 import com.adammcneilly.reader.ui.DayNightPreview
 import com.adammcneilly.reader.ui.theme.ReaderTheme
+
+private const val IMAGE_ASPECT_RATIO = 0.70F
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,6 +34,17 @@ fun BookSearchResultListItem(
         supportingText = {
             Text(
                 text = displayModel.author,
+            )
+        },
+        leadingContent = {
+            AsyncImage(
+                model = displayModel.thumbnailURL,
+                contentDescription = "${displayModel.title} Cover",
+                contentScale = ContentScale.FillBounds,
+                modifier = Modifier
+                    .width(ReaderTheme.sizing.searchResultImageWidth)
+                    .aspectRatio(IMAGE_ASPECT_RATIO)
+                    .clip(MaterialTheme.shapes.small),
             )
         },
     )

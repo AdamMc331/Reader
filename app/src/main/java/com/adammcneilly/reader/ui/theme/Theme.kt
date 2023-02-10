@@ -28,6 +28,7 @@ private val sizing = Sizing(
     screenPadding = 16.dp,
     listItemPadding = 16.dp,
     listItemMinWidth = 160.dp,
+    searchResultImageWidth = 48.dp,
 )
 
 @Composable
