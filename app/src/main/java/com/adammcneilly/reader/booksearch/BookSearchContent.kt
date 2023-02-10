@@ -74,18 +74,21 @@ private fun ActiveBookSearchContentPreview() {
                 title = "Leviathan Wakes",
                 author = "James S.A. Corey",
                 thumbnailURL = null,
+                isInLibrary = true,
             ),
             BookDisplayModel(
                 id = "2",
                 title = "Caliban's War",
                 author = "James S.A. Corey",
                 thumbnailURL = null,
+                isInLibrary = false,
             ),
             BookDisplayModel(
                 id = "3",
                 title = "Abaddon's Gate",
                 author = "James S.A. Corey",
                 thumbnailURL = null,
+                isInLibrary = false,
             ),
         ),
     )

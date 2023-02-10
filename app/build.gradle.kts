@@ -59,6 +59,7 @@ dependencies {
     debugImplementation(composeBom)
     androidTestImplementation(composeBom)
 
+    implementation(libs.accompanist.placeholder.material3)
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
@@ -74,6 +75,10 @@ dependencies {
     implementation(libs.compose.ui.tooling)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.square.moshi)
+    implementation(libs.square.okhttp.logging)
+    implementation(libs.square.retrofit)
+    implementation(libs.square.retrofit.moshi)
 
     testImplementation(libs.google.truth)
     testImplementation(libs.junit)

@@ -12,6 +12,7 @@ data class BookDisplayModel(
     val title: String,
     val author: String,
     val thumbnailURL: String?,
+    val isInLibrary: Boolean,
 )
 
 fun Book.toDisplayModel(): BookDisplayModel {
@@ -20,5 +21,6 @@ fun Book.toDisplayModel(): BookDisplayModel {
         title = this.title,
         author = this.author,
         thumbnailURL = this.thumbnailURL,
+        isInLibrary = this.isInLibrary,
     )
 }

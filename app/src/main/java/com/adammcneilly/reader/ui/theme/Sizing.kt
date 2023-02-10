@@ -14,6 +14,7 @@ data class Sizing(
     val screenPadding: Dp,
     val listItemPadding: Dp,
     val listItemMinWidth: Dp,
+    val searchResultImageWidth: Dp,
 )
 
 val LocalSizing = staticCompositionLocalOf {
@@ -22,5 +23,6 @@ val LocalSizing = staticCompositionLocalOf {
         screenPadding = 0.dp,
         listItemPadding = 0.dp,
         listItemMinWidth = 0.dp,
+        searchResultImageWidth = 0.dp,
     )
 }

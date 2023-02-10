@@ -59,6 +59,7 @@ private fun BookDetailContentPreview() {
         title = "Leviathan Wakes",
         author = "James S.A. Corey",
         thumbnailURL = null,
+        isInLibrary = true,
     )
 
     val viewState = BookDetailViewState(
