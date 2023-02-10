@@ -35,6 +35,7 @@ data class GoogleBooksItem(
             title = this.volumeInfo.title,
             author = this.volumeInfo.authors.joinToString(),
             thumbnailURL = this.volumeInfo.imageLinks?.thumbnail?.forceHttps(),
+            isInLibrary = false,
         )
     }
 }
