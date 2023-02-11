@@ -74,17 +74,7 @@ class ExpanseBookRepository @Inject constructor() : BookRepository {
         ),
     )
 
-    override suspend fun searchBooks(searchText: String): List<Book> {
-        return if (searchText.isEmpty()) {
-            emptyList()
-        } else {
-            expanseBooks.filter { book ->
-                book.title.contains(searchText, true) || book.author.contains(searchText, true)
-            }
-        }
-    }
-
-    override suspend fun getBooksInLibrary(): List<Book> {
+    override suspend fun getAllBooksInLibrary(): List<Book> {
         val ownedIds = listOf("1", "2", "3", "4", "5")
 
         return expanseBooks.filter { book ->

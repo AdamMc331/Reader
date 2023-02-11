@@ -1,7 +1,9 @@
 package com.adammcneilly.reader.di
 
 import com.adammcneilly.reader.data.BookRepository
-import com.adammcneilly.reader.data.googlebooks.GoogleBooksBookRepository
+import com.adammcneilly.reader.data.BookSearchService
+import com.adammcneilly.reader.data.ExpanseBookRepository
+import com.adammcneilly.reader.data.googlebooks.GoogleBooksBookSearchService
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,7 +19,11 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindBookRepository(
-//        bookRepository: ExpanseBookRepository,
-        bokRepository: GoogleBooksBookRepository,
+        bookRepository: ExpanseBookRepository,
     ): BookRepository
+
+    @Binds
+    abstract fun bindBookSearchService(
+        bookSearchService: GoogleBooksBookSearchService,
+    ): BookSearchService
 }
