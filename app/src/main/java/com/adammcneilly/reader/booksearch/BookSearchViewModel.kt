@@ -3,6 +3,7 @@ package com.adammcneilly.reader.booksearch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.reader.data.BookRepository
+import com.adammcneilly.reader.data.BookSearchService
 import com.adammcneilly.reader.displaymodels.toDisplayModel
 import com.adammcneilly.reader.models.Book
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +24,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class BookSearchViewModel @Inject constructor(
-    private val repository: BookRepository,
+    private val repository: BookSearchService,
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(BookSearchViewState())

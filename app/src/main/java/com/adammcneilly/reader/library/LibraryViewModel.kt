@@ -32,7 +32,7 @@ class LibraryViewModel @Inject constructor(
 
     private fun getBooksInLibrary() {
         viewModelScope.launch {
-            val books = bookRepository.getBooksInLibrary()
+            val books = bookRepository.getAllBooksInLibrary()
             val displayModels = books.map(Book::toDisplayModel)
 
             _state.update { currentState ->

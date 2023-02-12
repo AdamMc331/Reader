@@ -2,6 +2,7 @@ package com.adammcneilly.reader.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -14,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import com.adammcneilly.reader.R
 import com.adammcneilly.reader.ui.DayNightPreview
 import com.adammcneilly.reader.ui.theme.ReaderTheme
@@ -56,6 +58,9 @@ fun SearchBar(
             )
         },
         shape = CircleShape,
+        keyboardOptions = KeyboardOptions(
+            capitalization = KeyboardCapitalization.Words,
+        ),
     )
 }
 
