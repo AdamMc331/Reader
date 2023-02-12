@@ -11,4 +11,6 @@
     <string name="add_to_library">Add To Library</string>
     <string name="remove_from_library">Remove From Library</string>
     <string name="in_your_library">In Your Library</string>
+    <string name="read">Read</string>
+    <string name="unread">Unread</string>
 </resources>

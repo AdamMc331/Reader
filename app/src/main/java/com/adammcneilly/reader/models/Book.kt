@@ -8,11 +8,13 @@ package com.adammcneilly.reader.models
  * @property[author] The name of the person who has written this book.
  * @property[thumbnailURL] A remote image URL for the thumbnail of this book's cover.
  * @property[isInLibrary] If true, this book resides in the user's library.
+ * @property[isRead] If true, the user has already completed reading this book.
  */
 data class Book(
-    val id: String,
-    val title: String,
-    val author: String,
-    val thumbnailURL: String?,
-    val isInLibrary: Boolean,
+    val id: String = "",
+    val title: String = "",
+    val author: String = "",
+    val thumbnailURL: String? = null,
+    val isInLibrary: Boolean = false,
+    val isRead: Boolean = false,
 )
