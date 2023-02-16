@@ -15,6 +15,7 @@ class ExpanseBookRepository @Inject constructor() : BookRepository {
             author = "James S.A. Corey",
             thumbnailURL = "https://books.google.com/books/content?id=yud-foXqGUEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
             isInLibrary = true,
+            isRead = true,
         ),
         Book(
             id = "2",
@@ -22,6 +23,7 @@ class ExpanseBookRepository @Inject constructor() : BookRepository {
             author = "James S.A. Corey",
             thumbnailURL = "https://books.google.com/books/content?id=tXGRBgwxAHIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
             isInLibrary = true,
+            isRead = true,
         ),
         Book(
             id = "3",

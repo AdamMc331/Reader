@@ -3,6 +3,7 @@ package com.adammcneilly.reader.library
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adammcneilly.reader.data.BookRepository
+import com.adammcneilly.reader.displaymodels.BookDisplayModel
 import com.adammcneilly.reader.displaymodels.toDisplayModel
 import com.adammcneilly.reader.models.Book
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,9 +36,12 @@ class LibraryViewModel @Inject constructor(
             val books = bookRepository.getAllBooksInLibrary()
             val displayModels = books.map(Book::toDisplayModel)
 
+            val (readBooks, unreadBooks) = displayModels.partition(BookDisplayModel::isRead)
+
             _state.update { currentState ->
                 currentState.copy(
-                    books = displayModels,
+                    readBooks = readBooks,
+                    unreadBooks = unreadBooks,
                 )
             }
         }
