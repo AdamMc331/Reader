@@ -36,7 +36,7 @@ data class HomeConfig(
 
                 WindowWidthSizeClass.Expanded -> {
                     HomeConfig(
-                        navigationType = ReaderNavigationType.NAVIGATION_RAIL,
+                        navigationType = ReaderNavigationType.PERMANENT_NAVIGATION_DRAWER,
                         appBarActionType = TopBarActionType.TEXT,
                     )
                 }
