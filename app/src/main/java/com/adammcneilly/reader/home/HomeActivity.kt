@@ -46,7 +46,11 @@ class HomeActivity : ComponentActivity() {
                     viewModel.clearSelectedTab()
                 }
 
-                HomeScaffold(viewState, config, navController)
+                HomeScaffold(
+                    viewState = viewState.value,
+                    config = config,
+                    navController = navController,
+                )
             }
         }
     }
