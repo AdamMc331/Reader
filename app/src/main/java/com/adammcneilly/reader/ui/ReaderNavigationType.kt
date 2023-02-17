@@ -7,8 +7,11 @@ package com.adammcneilly.reader.ui
  * for the user to select which navigate to a corresponding screen.
  * @property[NAVIGATION_RAIL] If selected, the application will use a side-pinned navigation rail with tabs for the
  * user to select which navigate to a corresponding screen.
+ * @property[PERMANENT_NAVIGATION_DRAWER] If selected, the application will use a permanent navigation drawer on the
+ * side of the screen.
  */
 enum class ReaderNavigationType {
     BOTTOM_NAVIGATION,
     NAVIGATION_RAIL,
+    PERMANENT_NAVIGATION_DRAWER,
 }

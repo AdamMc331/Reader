@@ -72,7 +72,7 @@ private fun LazyGridScope.libraryHeading(
     ) {
         Text(
             text = stringResource(id = textRes),
-            style = MaterialTheme.typography.headlineLarge,
+            style = MaterialTheme.typography.titleLarge,
             modifier = modifier,
         )
     }
