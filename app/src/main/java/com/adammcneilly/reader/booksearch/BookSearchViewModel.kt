@@ -38,12 +38,20 @@ class BookSearchViewModel @Inject constructor(
             .distinctUntilChanged()
             .debounce(QUERY_DEBOUNCE_MILLIS)
             .onEach { searchText ->
+                _viewState.update {
+                    it.copy(
+                        isLoadingBooks = true,
+                    )
+                }
                 val books = repository
                     .searchBooks(searchText)
                     .map(Book::toDisplayModel)
 
                 _viewState.update {
-                    it.copy(results = books)
+                    it.copy(
+                        results = books,
+                        isLoadingBooks = false,
+                    )
                 }
             }
             .launchIn(viewModelScope)
