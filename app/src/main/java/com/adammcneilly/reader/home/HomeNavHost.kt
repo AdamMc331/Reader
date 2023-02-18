@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.adammcneilly.reader.booksearch.BookSearchScreen
 import com.adammcneilly.reader.library.LibraryScreen
+import com.adammcneilly.reader.settings.SettingsScreen
 
 @Composable
 fun HomeNavHost(
@@ -24,6 +25,10 @@ fun HomeNavHost(
 
         composable(HomeNavigationTab.LIBRARY.routeKey) {
             LibraryScreen()
+        }
+
+        composable(HomeNavigationTab.SETTINGS.routeKey) {
+            SettingsScreen()
         }
     }
 }
