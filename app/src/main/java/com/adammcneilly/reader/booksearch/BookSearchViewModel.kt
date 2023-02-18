@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -32,6 +33,7 @@ class BookSearchViewModel @Inject constructor(
 
     init {
         _viewState
+            .filter { it.searchText.isNotEmpty() }
             .map { it.searchText }
             .distinctUntilChanged()
             .debounce(QUERY_DEBOUNCE_MILLIS)
