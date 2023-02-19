@@ -3,6 +3,7 @@ package com.adammcneilly.reader.home
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryBooks
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.adammcneilly.reader.R
 
@@ -24,6 +25,11 @@ enum class HomeNavigationTab(
         icon = Icons.Default.Search,
         textRes = R.string.search,
         routeKey = "search",
+    ),
+    SETTINGS(
+        icon = Icons.Default.Settings,
+        textRes = R.string.settings,
+        routeKey = "settings",
     ),
     ;
 

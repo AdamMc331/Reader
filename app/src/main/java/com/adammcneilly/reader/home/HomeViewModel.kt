@@ -1,11 +1,7 @@
 package com.adammcneilly.reader.home
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
 import androidx.lifecycle.ViewModel
-import com.adammcneilly.reader.R
 import com.adammcneilly.reader.displaymodels.HomeNavigationTabDisplayModel
-import com.adammcneilly.reader.displaymodels.TopBarActionDisplayModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,22 +17,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     val state = _state.asStateFlow()
 
     init {
-        setTopBarActions()
         setInitialTabs()
-    }
-
-    private fun setTopBarActions() {
-        val settingsAction = TopBarActionDisplayModel(
-            icon = Icons.Default.Settings,
-            textResource = R.string.settings,
-            onClick = {},
-        )
-
-        _state.update { currentState ->
-            currentState.copy(
-                topBarActions = listOf(settingsAction),
-            )
-        }
     }
 
     private fun setInitialTabs() {
