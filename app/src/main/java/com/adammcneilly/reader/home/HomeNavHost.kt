@@ -21,7 +21,12 @@ fun HomeNavHost(
         modifier = modifier,
     ) {
         composable(HomeNavigationTab.SEARCH.routeKey) {
-            BookSearchScreen()
+            BookSearchScreen(
+                onBookClicked = { bookId ->
+                    val routeKey = BookDetailScreen.routeForBookId(bookId)
+                    navController.navigate(routeKey)
+                },
+            )
         }
 
         composable(HomeNavigationTab.LIBRARY.routeKey) {

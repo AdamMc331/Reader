@@ -1,6 +1,7 @@
 package com.adammcneilly.reader.booksearch
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,6 +26,7 @@ fun BookSearchContent(
     viewState: BookSearchViewState,
     onSearchTextChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    onBookClicked: (String) -> Unit = {},
 ) {
     Column(
         modifier = modifier,
@@ -49,6 +51,10 @@ fun BookSearchContent(
                 itemsIndexed(viewState.results) { index, displayModel ->
                     BookSearchResultListItem(
                         displayModel = displayModel,
+                        modifier = Modifier
+                            .clickable {
+                                onBookClicked.invoke(displayModel.id)
+                            },
                     )
 
                     if (index != viewState.results.lastIndex) {
