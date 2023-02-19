@@ -1,5 +1,6 @@
 package com.adammcneilly.reader.library
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -17,6 +18,7 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
 fun LibraryContent(
+    onBookClicked: (String) -> Unit,
     viewState: LibraryViewState,
     modifier: Modifier = Modifier,
 ) {
@@ -31,11 +33,13 @@ fun LibraryContent(
         librarySection(
             headingTextRes = R.string.unread,
             books = viewState.unreadBooks,
+            onBookClicked = onBookClicked,
         )
 
         librarySection(
             headingTextRes = R.string.read,
             books = viewState.readBooks,
+            onBookClicked = onBookClicked,
         )
     }
 }
@@ -43,20 +47,29 @@ fun LibraryContent(
 private fun LazyGridScope.librarySection(
     headingTextRes: Int,
     books: List<BookDisplayModel>,
+    onBookClicked: (String) -> Unit,
 ) {
     // In the future, maybe we want this to render a possible empty state?
     if (books.isNotEmpty()) {
         libraryHeading(headingTextRes)
-        bookList(books)
+        bookList(
+            books = books,
+            onBookClicked = onBookClicked,
+        )
     }
 }
 
 private fun LazyGridScope.bookList(
     books: List<BookDisplayModel>,
+    onBookClicked: (String) -> Unit,
 ) {
     items(books) { book ->
         LibraryBookListItem(
             displayModel = book,
+            modifier = Modifier
+                .clickable {
+                    onBookClicked.invoke(book.id)
+                },
         )
     }
 }
