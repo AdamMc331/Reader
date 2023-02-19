@@ -18,9 +18,9 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 
 @Composable
 fun LibraryContent(
-    onBookClicked: (String) -> Unit,
     viewState: LibraryViewState,
     modifier: Modifier = Modifier,
+    onBookClicked: (String) -> Unit = {},
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(
