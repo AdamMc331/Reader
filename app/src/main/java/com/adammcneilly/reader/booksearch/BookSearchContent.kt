@@ -1,5 +1,6 @@
 package com.adammcneilly.reader.booksearch
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,7 +36,7 @@ fun BookSearchContent(
             onValueChange = onSearchTextChange,
         )
 
-        if (viewState.isLoadingBooks) {
+        AnimatedVisibility(visible = viewState.isLoadingBooks) {
             LinearProgressIndicator(
                 modifier = Modifier
                     .fillMaxWidth()
