@@ -11,4 +11,5 @@ import com.adammcneilly.reader.displaymodels.BookDisplayModel
 data class BookSearchViewState(
     val searchText: String = "",
     val results: List<BookDisplayModel> = emptyList(),
+    val isLoadingBooks: Boolean = false,
 )
