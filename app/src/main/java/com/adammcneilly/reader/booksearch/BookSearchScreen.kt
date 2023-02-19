@@ -11,6 +11,7 @@ import com.adammcneilly.reader.ui.theme.ReaderTheme
 fun BookSearchScreen(
     modifier: Modifier = Modifier,
     viewModel: BookSearchViewModel = hiltViewModel(),
+    onBookClicked: (String) -> Unit = {},
 ) {
     val viewState = viewModel.viewState.collectAsState()
 
@@ -18,5 +19,6 @@ fun BookSearchScreen(
         viewState = viewState.value,
         onSearchTextChange = viewModel::searchTextChanged,
         modifier = modifier.padding(ReaderTheme.sizing.screenPadding),
+        onBookClicked = onBookClicked,
     )
 }
