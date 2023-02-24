@@ -21,7 +21,12 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun setInitialTabs() {
-        val tabs = HomeNavigationTab.values().map { tab ->
+        val availableTabs = listOf(
+            HomeNavigationTab.LIBRARY,
+            HomeNavigationTab.SEARCH,
+        )
+
+        val tabs = availableTabs.map { tab ->
             HomeNavigationTabDisplayModel(
                 tab = tab,
                 selected = HomeNavigationTab.START_DESTINATION == tab,
