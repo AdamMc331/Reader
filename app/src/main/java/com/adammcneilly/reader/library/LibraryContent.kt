@@ -2,6 +2,7 @@ package com.adammcneilly.reader.library
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
@@ -29,6 +30,9 @@ fun LibraryContent(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
         horizontalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
+        contentPadding = PaddingValues(
+            all = ReaderTheme.sizing.screenPadding,
+        ),
     ) {
         librarySection(
             headingTextRes = R.string.unread,

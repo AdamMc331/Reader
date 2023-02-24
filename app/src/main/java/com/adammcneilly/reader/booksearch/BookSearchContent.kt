@@ -3,7 +3,7 @@ package com.adammcneilly.reader.booksearch
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -28,38 +28,43 @@ fun BookSearchContent(
     modifier: Modifier = Modifier,
     onBookClicked: (String) -> Unit = {},
 ) {
-    Column(
+    LazyColumn(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
         horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(
+            all = ReaderTheme.sizing.screenPadding,
+        ),
     ) {
-        SearchBar(
-            value = viewState.searchText,
-            onValueChange = onSearchTextChange,
-        )
-
-        AnimatedVisibility(visible = viewState.isLoadingBooks) {
-            LinearProgressIndicator(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(MaterialTheme.shapes.small),
+        item {
+            SearchBar(
+                value = viewState.searchText,
+                onValueChange = onSearchTextChange,
             )
         }
 
-        if (viewState.results.isNotEmpty()) {
-            LazyColumn {
-                itemsIndexed(viewState.results) { index, displayModel ->
-                    BookSearchResultListItem(
-                        displayModel = displayModel,
-                        modifier = Modifier
-                            .clickable {
-                                onBookClicked.invoke(displayModel.id)
-                            },
-                    )
+        item {
+            AnimatedVisibility(visible = viewState.isLoadingBooks) {
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(MaterialTheme.shapes.small),
+                )
+            }
+        }
 
-                    if (index != viewState.results.lastIndex) {
-                        Divider()
-                    }
+        if (viewState.results.isNotEmpty()) {
+            itemsIndexed(viewState.results) { index, displayModel ->
+                BookSearchResultListItem(
+                    displayModel = displayModel,
+                    modifier = Modifier
+                        .clickable {
+                            onBookClicked.invoke(displayModel.id)
+                        },
+                )
+
+                if (index != viewState.results.lastIndex) {
+                    Divider()
                 }
             }
         }
