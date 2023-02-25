@@ -41,7 +41,16 @@ class HomeActivity : ComponentActivity() {
                 val config = HomeConfig.fromWindowSize(windowSize)
 
                 viewState.value.selectedTab?.run {
-                    navController.navigate(this.routeKey)
+                    navController.navigate(this.routeKey) {
+                        navController.graph.startDestinationRoute?.let { screenRoute ->
+                            popUpTo(screenRoute) {
+                                saveState = true
+                            }
+                        }
+
+                        launchSingleTop = true
+                        restoreState = true
+                    }
 
                     viewModel.clearSelectedTab()
                 }
