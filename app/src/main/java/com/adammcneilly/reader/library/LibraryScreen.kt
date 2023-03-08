@@ -1,5 +1,6 @@
 package com.adammcneilly.reader.library
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ fun LibraryScreen(
     LibraryContent(
         onBookClicked = onBookClicked,
         viewState = viewState.value,
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxSize(),
     )
 }
