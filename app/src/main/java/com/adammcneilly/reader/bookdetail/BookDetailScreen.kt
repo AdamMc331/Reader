@@ -1,16 +1,28 @@
-package com.adammcneilly.reader
+package com.adammcneilly.reader.bookdetail
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.adammcneilly.reader.displaymodels.BookDisplayModel
 
 @Composable
 fun BookDetailScreen(
     bookId: String,
     modifier: Modifier = Modifier,
 ) {
-    Text(
-        text = "Book: $bookId",
+    val viewState = BookDetailViewState(
+        book = BookDisplayModel(
+            id = bookId,
+            thumbnailURL = "https://books.google.com/books/content?id=yud-foXqGUEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+            title = "Leviathan Wakes",
+            author = "James S.A. Corey",
+            isInLibrary = true,
+            isRead = true,
+        ),
+    )
+
+    BookDetailContent(
+        viewState = viewState,
+        modifier = modifier,
     )
 }
 

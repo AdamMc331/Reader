@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.adammcneilly.reader.BookDetailScreen
+import com.adammcneilly.reader.bookdetail.BookDetailScreen
 import com.adammcneilly.reader.booksearch.BookSearchScreen
 import com.adammcneilly.reader.library.LibraryScreen
 import com.adammcneilly.reader.settings.SettingsScreen
