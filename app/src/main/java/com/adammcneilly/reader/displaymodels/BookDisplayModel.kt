@@ -14,6 +14,7 @@ data class BookDisplayModel(
     val thumbnailURL: String? = null,
     val isInLibrary: Boolean = false,
     val isRead: Boolean = false,
+    val numPages: Int = 0,
 )
 
 fun Book.toDisplayModel(): BookDisplayModel {

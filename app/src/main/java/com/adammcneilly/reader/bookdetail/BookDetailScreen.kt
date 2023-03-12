@@ -17,6 +17,7 @@ fun BookDetailScreen(
             author = "James S.A. Corey",
             isInLibrary = true,
             isRead = true,
+            numPages = 534,
         ),
     )
 

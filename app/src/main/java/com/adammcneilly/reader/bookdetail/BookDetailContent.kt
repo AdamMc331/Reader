@@ -3,11 +3,13 @@ package com.adammcneilly.reader.bookdetail
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -33,92 +35,117 @@ fun BookDetailContent(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primaryContainer),
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .verticalScroll(rememberScrollState()),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(ReaderTheme.sizing.screenPadding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
-        ) {
-            AsyncImage(
-                model = "https://books.google.com/books/content?id=yud-foXqGUEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-                contentDescription = stringResource(R.string.book_cover_content_description),
+        BookCoverTitle(viewState)
+
+        BookInfoSheet(viewState)
+    }
+}
+
+@Composable
+private fun BookInfoSheet(
+    viewState: BookDetailViewState,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                color = MaterialTheme.colorScheme.background,
+                shape = RoundedCornerShape(
+                    topStart = 24.dp,
+                    topEnd = 24.dp,
+                ),
+            )
+            .padding(16.dp),
+    ) {
+        Text(
+            text = "Your info",
+            style = MaterialTheme.typography.titleMedium,
+        )
+
+        val yourAttrs = listOf(
+            "Reading Status" to "Finished",
+            "Pages Read" to "534 pages (100%)",
+            "Finish date" to "February 27, 2023",
+            "Your Rating" to "5 Stars",
+        )
+
+        yourAttrs.forEachIndexed { index, (key, value) ->
+            BookAttributeListItem(
+                name = key,
+                value = value,
                 modifier = Modifier
-                    .height(360.dp)
-                    .clip(MaterialTheme.shapes.large),
-                contentScale = ContentScale.FillHeight,
-            )
-
-            Text(
-                text = viewState.book.title,
-                style = MaterialTheme.typography.headlineLarge,
-            )
-
-            Text(
-                text = viewState.book.author,
-                style = MaterialTheme.typography.titleLarge,
-            )
-        }
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    color = MaterialTheme.colorScheme.background,
-                    shape = RoundedCornerShape(
-                        topStart = 24.dp,
-                        topEnd = 24.dp,
+                    .fillMaxWidth()
+                    .padding(
+                        vertical = ReaderTheme.sizing.listItemPadding,
                     ),
-                )
-                .padding(16.dp),
-        ) {
-            Text(
-                text = "Book info",
-                style = MaterialTheme.typography.titleSmall,
             )
 
-            Row {
-                Text(
-                    text = "Title",
-                    modifier = Modifier
-                        .weight(1F),
-                )
-
-                Text(
-                    text = "Leviathan Wakes",
-                )
-            }
-
-            Divider()
-
-            Row {
-                Text(
-                    text = "Authors",
-                    modifier = Modifier
-                        .weight(1F),
-                )
-
-                Text(
-                    text = "James S.A. Corey",
-                )
-            }
-
-            Divider()
-
-            Row {
-                Text(
-                    text = "Number of pages",
-                    modifier = Modifier
-                        .weight(1F),
-                )
-
-                Text(
-                    text = "534",
-                )
+            if (index != yourAttrs.lastIndex) {
+                Divider()
             }
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Book info",
+            style = MaterialTheme.typography.titleMedium,
+        )
+
+        val attributes = listOf(
+            "Title" to viewState.book.title,
+            "Authors" to viewState.book.author,
+            "Number of pages" to viewState.book.numPages.toString(),
+        )
+
+        attributes.forEachIndexed { index, (key, value) ->
+            BookAttributeListItem(
+                name = key,
+                value = value,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        vertical = ReaderTheme.sizing.listItemPadding,
+                    ),
+            )
+
+            if (index != attributes.lastIndex) {
+                Divider()
+            }
+        }
+    }
+}
+
+@Composable
+private fun BookCoverTitle(viewState: BookDetailViewState) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(ReaderTheme.sizing.screenPadding),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(ReaderTheme.sizing.verticalListSpacing),
+    ) {
+        AsyncImage(
+            model = viewState.book.thumbnailURL,
+            contentDescription = stringResource(R.string.book_cover_content_description),
+            modifier = Modifier
+                .height(360.dp)
+                .clip(MaterialTheme.shapes.large),
+            contentScale = ContentScale.FillHeight,
+        )
+
+        Text(
+            text = viewState.book.title,
+            style = MaterialTheme.typography.headlineLarge,
+        )
+
+        Text(
+            text = viewState.book.author,
+            style = MaterialTheme.typography.titleLarge,
+        )
     }
 }
 
@@ -129,8 +156,9 @@ private fun BookDetailContentPreview() {
         id = "1",
         title = "Leviathan Wakes",
         author = "James S.A. Corey",
-        thumbnailURL = null,
+        thumbnailURL = "https://books.google.com/books/content?id=yud-foXqGUEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
         isInLibrary = true,
+        numPages = 534,
     )
 
     val viewState = BookDetailViewState(
