@@ -1,11 +1,10 @@
 package com.adammcneilly.reader.home
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.PermanentNavigationDrawer
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -52,23 +51,15 @@ private fun PermanentNavDrawerHomeContent(
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 private fun NavigationBarHomeContent(
     viewState: HomeViewState,
     config: HomeConfig,
     navController: NavHostController,
 ) {
-    Scaffold(
-        bottomBar = {
-            if (config.navigationType == ReaderNavigationType.BOTTOM_NAVIGATION) {
-                ReaderBottomNavigation(
-                    navigationItems = viewState.navigationTabs,
-                )
-            }
-        },
-    ) { paddingValues ->
+    Column {
         Row(
-            modifier = Modifier.padding(paddingValues),
+            modifier = Modifier
+                .weight(1F),
         ) {
             if (config.navigationType == ReaderNavigationType.NAVIGATION_RAIL) {
                 ReaderNavigationRail(
@@ -81,6 +72,12 @@ private fun NavigationBarHomeContent(
                 modifier = Modifier
                     .weight(1F)
                     .statusBarsPadding(),
+            )
+        }
+
+        if (config.navigationType == ReaderNavigationType.BOTTOM_NAVIGATION) {
+            ReaderBottomNavigation(
+                navigationItems = viewState.navigationTabs,
             )
         }
     }

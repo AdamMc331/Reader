@@ -1,5 +1,6 @@
 package com.adammcneilly.reader.booksearch
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -16,7 +17,8 @@ fun BookSearchScreen(
     BookSearchContent(
         viewState = viewState.value,
         onSearchTextChange = viewModel::searchTextChanged,
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxSize(),
         onBookClicked = onBookClicked,
     )
 }
