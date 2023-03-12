@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import com.adammcneilly.reader.displaymodels.BookDisplayModel
 
 @Composable
+@Suppress("MaxLineLength")
 fun BookDetailScreen(
     bookId: String,
     modifier: Modifier = Modifier,

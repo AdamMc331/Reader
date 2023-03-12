@@ -60,11 +60,6 @@ private fun BookInfoSheet(
             )
             .padding(16.dp),
     ) {
-        Text(
-            text = "Your info",
-            style = MaterialTheme.typography.titleMedium,
-        )
-
         val yourAttrs = listOf(
             "Reading Status" to "Finished",
             "Pages Read" to "534 pages (100%)",
@@ -72,28 +67,9 @@ private fun BookInfoSheet(
             "Your Rating" to "5 Stars",
         )
 
-        yourAttrs.forEachIndexed { index, (key, value) ->
-            BookAttributeListItem(
-                name = key,
-                value = value,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        vertical = ReaderTheme.sizing.listItemPadding,
-                    ),
-            )
-
-            if (index != yourAttrs.lastIndex) {
-                Divider()
-            }
-        }
+        AttributeList(title = "Your Info", attributes = yourAttrs)
 
         Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = "Book info",
-            style = MaterialTheme.typography.titleMedium,
-        )
 
         val attributes = listOf(
             "Title" to viewState.book.title,
@@ -101,20 +77,33 @@ private fun BookInfoSheet(
             "Number of pages" to viewState.book.numPages.toString(),
         )
 
-        attributes.forEachIndexed { index, (key, value) ->
-            BookAttributeListItem(
-                name = key,
-                value = value,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        vertical = ReaderTheme.sizing.listItemPadding,
-                    ),
-            )
+        AttributeList(title = "Book Info", attributes = attributes)
+    }
+}
 
-            if (index != attributes.lastIndex) {
-                Divider()
-            }
+@Composable
+private fun AttributeList(
+    title: String,
+    attributes: List<Pair<String, String>>,
+) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.titleMedium,
+    )
+
+    attributes.forEachIndexed { index, (key, value) ->
+        BookAttributeListItem(
+            name = key,
+            value = value,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    vertical = ReaderTheme.sizing.listItemPadding,
+                ),
+        )
+
+        if (index != attributes.lastIndex) {
+            Divider()
         }
     }
 }
@@ -151,6 +140,7 @@ private fun BookCoverTitle(viewState: BookDetailViewState) {
 
 @Composable
 @DayNightPreview
+@Suppress("MaxLineLength")
 private fun BookDetailContentPreview() {
     val displayModel = BookDisplayModel(
         id = "1",
