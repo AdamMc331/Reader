@@ -1,5 +1,6 @@
 package com.adammcneilly.reader.home
 
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -15,39 +16,41 @@ fun HomeNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
-    NavHost(
-        navController = navController,
-        startDestination = HomeNavigationTab.START_DESTINATION.routeKey,
-        modifier = modifier,
-    ) {
-        composable(HomeNavigationTab.SEARCH.routeKey) {
-            BookSearchScreen(
-                onBookClicked = { bookId ->
-                    val routeKey = BookDetailScreen.routeForBookId(bookId)
-                    navController.navigate(routeKey)
-                },
-            )
-        }
+    Surface {
+        NavHost(
+            navController = navController,
+            startDestination = HomeNavigationTab.START_DESTINATION.routeKey,
+            modifier = modifier,
+        ) {
+            composable(HomeNavigationTab.SEARCH.routeKey) {
+                BookSearchScreen(
+                    onBookClicked = { bookId ->
+                        val routeKey = BookDetailScreen.routeForBookId(bookId)
+                        navController.navigate(routeKey)
+                    },
+                )
+            }
 
-        composable(HomeNavigationTab.LIBRARY.routeKey) {
-            LibraryScreen(
-                onBookClicked = { bookId ->
-                    val routeKey = BookDetailScreen.routeForBookId(bookId)
-                    navController.navigate(routeKey)
-                },
-            )
-        }
+            composable(HomeNavigationTab.LIBRARY.routeKey) {
+                LibraryScreen(
+                    onBookClicked = { bookId ->
+                        val routeKey = BookDetailScreen.routeForBookId(bookId)
+                        navController.navigate(routeKey)
+                    },
+                )
+            }
 
-        composable(HomeNavigationTab.SETTINGS.routeKey) {
-            SettingsScreen()
-        }
+            composable(HomeNavigationTab.SETTINGS.routeKey) {
+                SettingsScreen()
+            }
 
-        composable(BookDetailScreen.ROUTE_KEY) { backStackEntry ->
-            val bookId = backStackEntry.arguments?.getString(BookDetailScreen.ARG_BOOK_ID)
+            composable(BookDetailScreen.ROUTE_KEY) { backStackEntry ->
+                val bookId = backStackEntry.arguments?.getString(BookDetailScreen.ARG_BOOK_ID)
 
-            BookDetailScreen(
-                bookId = bookId.orEmpty(),
-            )
+                BookDetailScreen(
+                    bookId = bookId.orEmpty(),
+                )
+            }
         }
     }
 }
