@@ -15,6 +15,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+private const val QUERY_DEBOUNCE_MILLIS = 300L
+
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val bookRepository: BookRepository,
@@ -29,7 +31,7 @@ class SearchViewModel @Inject constructor(
     private fun observeQuery() {
         val bookQuery = state
             .map { it.query }
-            .debounce(timeoutMillis = 300)
+            .debounce(timeoutMillis = QUERY_DEBOUNCE_MILLIS)
             .flatMapConcat { query ->
                 bookRepository.searchBooks(query.text)
             }
