@@ -11,6 +11,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.adammcneilly.reader.R
 import com.adammcneilly.reader.core.displaymodels.NavigationItemDisplayModel
@@ -30,7 +31,7 @@ fun BottomNavigationBar(
                 onClick = { },
                 icon = {
                     Icon(
-                       imageVector = item.icon,
+                        imageVector = item.icon,
                         contentDescription = stringResource(item.labelRes),
                     )
                 },
@@ -41,6 +42,7 @@ fun BottomNavigationBar(
 
 @Composable
 @PreviewLightDark
+@PreviewDynamicColors
 private fun BottomNavigationBarPreview() {
     ReaderTheme {
         BottomNavigationBar(
