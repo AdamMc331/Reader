@@ -30,6 +30,7 @@ import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 @Composable
 fun SearchContent(
     state: SearchState,
+    onQueryChange: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Surface(
@@ -41,7 +42,10 @@ fun SearchContent(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             item {
-                SearchInput(state)
+                SearchInput(
+                    state = state,
+                    onValueChange = onQueryChange,
+                )
             }
 
             items(
@@ -61,11 +65,11 @@ fun SearchContent(
 @Composable
 private fun SearchInput(
     state: SearchState,
+    onValueChange: (TextFieldValue) -> Unit,
 ) {
     OutlinedTextField(
         value = state.query,
-        onValueChange = {
-        },
+        onValueChange = onValueChange,
         placeholder = {
             Text(
                 text = stringResource(R.string.search),
@@ -110,6 +114,7 @@ private fun SearchContentPreview(
     ReaderTheme {
         SearchContent(
             state = searchState,
+            onQueryChange = {},
         )
     }
 }

@@ -53,6 +53,7 @@ object DataModule {
     @Provides
     @Singleton
     fun provideOpenLibraryApiService(
+        @Named("OpenLibraryRetrofit")
         retrofit: Retrofit,
     ): OpenLibraryRetrofitAPI = retrofit.create(OpenLibraryRetrofitAPI::class.java)
 
