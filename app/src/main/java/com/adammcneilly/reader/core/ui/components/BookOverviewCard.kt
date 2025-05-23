@@ -42,18 +42,32 @@ fun BookOverviewCard(
             CoverImage(book)
 
             Column {
-                Text(
-                    text = book.title,
-                    style = MaterialTheme.typography.titleMedium,
-                )
+                BookTitle(book)
 
-                Text(
-                    text = book.author.name,
-                    style = MaterialTheme.typography.labelMedium,
-                )
+                AuthorName(book)
             }
         }
     }
+}
+
+@Composable
+private fun AuthorName(
+    book: BookDisplayModel,
+) {
+    Text(
+        text = book.author.name,
+        style = MaterialTheme.typography.labelMedium,
+    )
+}
+
+@Composable
+private fun BookTitle(
+    book: BookDisplayModel,
+) {
+    Text(
+        text = book.title,
+        style = MaterialTheme.typography.titleMedium,
+    )
 }
 
 @Composable
