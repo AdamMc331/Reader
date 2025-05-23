@@ -23,6 +23,8 @@ import com.adammcneilly.reader.core.displaymodels.BookDisplayModel
 import com.adammcneilly.reader.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 
+private const val COVER_IMAGE_ASPECT_RATIO = 0.75F
+
 @Composable
 fun BookOverviewCard(
     book: BookDisplayModel,
@@ -64,7 +66,7 @@ private fun CoverImage(
         contentScale = ContentScale.FillBounds,
         modifier = Modifier
             .height(100.dp)
-            .aspectRatio(0.75F)
+            .aspectRatio(COVER_IMAGE_ASPECT_RATIO)
             .clip(MaterialTheme.shapes.small),
     )
 }
