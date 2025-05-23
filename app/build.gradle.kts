@@ -67,7 +67,6 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
     implementation(libs.hilt.android)
-    // NOTE: Add to template?
     implementation(libs.hilt.navigation.compose)
     implementation(libs.square.logging.interceptor)
     implementation(libs.square.moshi.kotlin)
