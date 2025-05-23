@@ -6,21 +6,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class OpenLibraryBookRepository
-    @Inject
-    constructor(
-        private val api: OpenLibraryRetrofitAPI,
-    ) : BookRepository {
-        override fun searchBooks(
-            query: String,
-        ): Flow<List<Book>> =
-            flow {
-                val response = api.searchBooks(query)
-                val books = response.docs
-                    ?.mapNotNull { openLibraryBookDTO ->
-                        openLibraryBookDTO?.toBook()
-                    }.orEmpty()
+class OpenLibraryBookRepository @Inject constructor(
+    private val api: OpenLibraryRetrofitAPI,
+) : BookRepository {
+    override fun searchBooks(
+        query: String,
+    ): Flow<List<Book>> {
+        return flow {
+            val response = api.searchBooks(query)
+            val books = response.docs
+                ?.mapNotNull { openLibraryBookDTO ->
+                    openLibraryBookDTO?.toBook()
+                }.orEmpty()
 
-                emit(books)
-            }
+            emit(books)
+        }
     }
+}
