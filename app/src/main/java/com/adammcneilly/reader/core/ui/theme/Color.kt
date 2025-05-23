@@ -1,6 +1,6 @@
 @file:Suppress("MagicNumber")
 
-package com.adammcneilly.reader.theme
+package com.adammcneilly.reader.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

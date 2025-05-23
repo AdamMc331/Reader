@@ -1,4 +1,4 @@
-package com.adammcneilly.reader.theme
+package com.adammcneilly.reader.core.ui.theme
 
 import android.annotation.TargetApi
 import android.os.Build
