@@ -77,6 +77,7 @@ private fun SearchInput(
     )
 }
 
+@Suppress("MagicNumber")
 class SearchStateProvider :
     CollectionPreviewParameterProvider<SearchState>(
         collection = listOf(
