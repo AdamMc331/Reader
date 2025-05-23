@@ -51,6 +51,6 @@ data class OpenLibraryBookDTO(
                 name = authorName?.firstOrNull().orEmpty(),
                 imageUrl = "TODO:",
             ),
-            coverImageUrl = "TODO:",
+            coverImageUrl = "https://covers.openlibrary.org/a/id/$coverI-M.jpg",
         )
 }
