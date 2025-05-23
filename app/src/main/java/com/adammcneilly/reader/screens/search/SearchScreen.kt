@@ -14,7 +14,7 @@ fun SearchScreen(
 
     SearchContent(
         state = state.value,
-        onQueryChange = viewModel::onQueryChange,
+        onEvent = viewModel::onEvent,
         modifier = modifier,
     )
 }

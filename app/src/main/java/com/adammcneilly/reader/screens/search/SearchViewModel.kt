@@ -47,7 +47,17 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun onQueryChange(
+    fun onEvent(
+        event: SearchEvent,
+    ) {
+        when (event) {
+            is SearchEvent.QueryChanged -> {
+                onQueryChange(event.query)
+            }
+        }
+    }
+
+    private fun onQueryChange(
         query: TextFieldValue,
     ) {
         mutableState.update { currentState ->

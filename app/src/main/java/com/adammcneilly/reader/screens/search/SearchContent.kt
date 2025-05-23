@@ -30,7 +30,7 @@ import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 @Composable
 fun SearchContent(
     state: SearchState,
-    onQueryChange: (TextFieldValue) -> Unit,
+    onEvent: (SearchEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Surface(
@@ -44,7 +44,9 @@ fun SearchContent(
             item {
                 SearchInput(
                     state = state,
-                    onValueChange = onQueryChange,
+                    onValueChange = { query ->
+                        onEvent.invoke(SearchEvent.QueryChanged(query))
+                    },
                 )
             }
 
@@ -114,7 +116,7 @@ private fun SearchContentPreview(
     ReaderTheme {
         SearchContent(
             state = searchState,
-            onQueryChange = {},
+            onEvent = {},
         )
     }
 }
