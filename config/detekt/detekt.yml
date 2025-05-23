@@ -10,3 +10,9 @@ naming:
     functionPattern: '[a-z][a-zA-Z0-9]*'
     excludeClassPattern: '$^'
     ignoreAnnotated: ['Composable']
+
+style:
+  active: true
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated: ['Preview', 'PreviewLightDark', 'PreviewDynamicColors']
