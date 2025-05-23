@@ -6,6 +6,7 @@ data class BookDisplayModel(
     val id: String,
     val title: String,
     val coverImage: ImageDisplayModel,
+    val author: AuthorDisplayModel,
 ) {
     constructor(
         book: Book,
@@ -13,5 +14,6 @@ data class BookDisplayModel(
         id = book.id,
         title = book.title,
         coverImage = ImageDisplayModel.Remote(book.coverImageUrl),
+        author = AuthorDisplayModel(book.author),
     )
 }
