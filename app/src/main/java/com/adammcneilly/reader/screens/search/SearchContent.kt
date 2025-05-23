@@ -1,9 +1,11 @@
 package com.adammcneilly.reader.screens.search
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -19,6 +21,10 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.reader.R
+import com.adammcneilly.reader.core.displaymodels.AuthorDisplayModel
+import com.adammcneilly.reader.core.displaymodels.BookDisplayModel
+import com.adammcneilly.reader.core.displaymodels.ImageDisplayModel
+import com.adammcneilly.reader.core.ui.components.BookOverviewCard
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 
 @Composable
@@ -32,9 +38,21 @@ fun SearchContent(
     ) {
         LazyColumn(
             contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             item {
                 SearchInput(state)
+            }
+
+            items(
+                items = state.books,
+                key = { book -> book.id },
+            ) { book ->
+                BookOverviewCard(
+                    book = book,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                )
             }
         }
     }
@@ -64,7 +82,19 @@ class SearchStateProvider :
         collection = listOf(
             SearchState.default(),
             SearchState(
-                query = TextFieldValue("Lord of the Rings"),
+                query = TextFieldValue("Androids"),
+                books = List(3) { index ->
+                    BookDisplayModel(
+                        id = index.toString(),
+                        title = "Androids",
+                        coverImage = ImageDisplayModel.Local(R.drawable.androids),
+                        author = AuthorDisplayModel(
+                            id = "123",
+                            name = "Chet Haase",
+                            image = ImageDisplayModel.Local(R.drawable.chet),
+                        ),
+                    )
+                },
             ),
         ),
     )
