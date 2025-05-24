@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 
 @Composable
+@Suppress("LongParameterList")
 @OptIn(ExperimentalSharedTransitionApi::class)
 fun ScaffoldState.PersistentScaffold(
     modifier: Modifier = Modifier,
