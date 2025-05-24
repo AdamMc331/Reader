@@ -54,6 +54,7 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation("androidx.navigation:navigation-compose:2.9.0")
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.adaptive.android)
