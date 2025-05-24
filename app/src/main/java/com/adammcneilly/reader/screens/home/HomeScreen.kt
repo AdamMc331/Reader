@@ -10,5 +10,6 @@ fun HomeScreen(
 ) {
     Text(
         text = "Stub Home Screen",
+        modifier = modifier,
     )
 }

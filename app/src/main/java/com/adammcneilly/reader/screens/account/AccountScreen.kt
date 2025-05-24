@@ -10,5 +10,6 @@ fun AccountScreen(
 ) {
     Text(
         text = "Stub Account Screen",
+        modifier = modifier,
     )
 }

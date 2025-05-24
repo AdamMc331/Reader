@@ -10,5 +10,6 @@ fun MenuScreen(
 ) {
     Text(
         text = "Stub Menu Screen",
+        modifier = modifier,
     )
 }
