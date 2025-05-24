@@ -25,6 +25,7 @@ retrofit = "3.0.0"
 room = "2.7.1"
 sortDependencies = "0.14"
 testParameterInjector = "1.18"
+adaptiveAndroid = "1.1.0"
 
 [libraries]
 android-material = { module = "com.google.android.material:material", version.ref = "material" }
@@ -60,6 +61,7 @@ square-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref 
 square-moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 square-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 square-retrofit-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit"}
+androidx-adaptive-android = { group = "androidx.compose.material3.adaptive", name = "adaptive-android", version.ref = "adaptiveAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
