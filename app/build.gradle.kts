@@ -54,13 +54,13 @@ android {
 
 dependencies {
     implementation(platform(libs.compose.bom))
-    implementation("androidx.navigation:navigation-compose:2.9.0")
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.adaptive.android)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.room.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.okhttp)
