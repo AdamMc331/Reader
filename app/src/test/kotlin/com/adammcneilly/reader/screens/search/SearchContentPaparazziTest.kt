@@ -16,6 +16,7 @@ class SearchContentPaparazziTest : BasePaparazziTest() {
         ) {
             SearchContent(
                 state = SearchState.default(),
+                onEvent = {},
             )
         }
     }
@@ -41,6 +42,7 @@ class SearchContentPaparazziTest : BasePaparazziTest() {
                         )
                     },
                 ),
+                onEvent = {},
             )
         }
     }

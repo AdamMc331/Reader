@@ -6,10 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
+import com.adammcneilly.reader.screens.search.SearchScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(
         savedInstanceState: Bundle?,
@@ -23,16 +24,9 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    Greeting("Android")
+                    SearchScreen()
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(
-    name: String,
-) {
-    Text(text = "Hello $name!")
 }
