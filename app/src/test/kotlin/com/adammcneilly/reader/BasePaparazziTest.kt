@@ -9,8 +9,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.cash.paparazzi.Paparazzi
+import com.adammcneilly.reader.core.app.AppState
+import com.adammcneilly.reader.core.app.AppStateData
 import com.adammcneilly.reader.core.app.LocalAppState
-import com.adammcneilly.reader.core.app.previewAppState
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 import com.google.testing.junit.testparameterinjector.TestParameter
 import com.google.testing.junit.testparameterinjector.TestParameterInjector
@@ -43,7 +44,7 @@ abstract class BasePaparazziTest {
                 dynamicTheme = false,
             ) {
                 CompositionLocalProvider(
-                    LocalAppState provides previewAppState,
+                    LocalAppState provides AppState(AppStateData()),
                 ) {
                     Surface(
                         modifier = Modifier

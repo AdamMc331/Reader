@@ -8,29 +8,6 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import com.adammcneilly.reader.core.displaymodels.NavigationItemDisplayModel
 import kotlinx.parcelize.Parcelize
 
-val previewAppState = AppState(
-    initialData = AppStateData(
-        navItems = listOf(
-            NavigationItemDisplayModel(
-                tab = HomeTab.Home,
-                selected = true,
-            ),
-            NavigationItemDisplayModel(
-                tab = HomeTab.Search,
-                selected = false,
-            ),
-            NavigationItemDisplayModel(
-                tab = HomeTab.Account,
-                selected = false,
-            ),
-            NavigationItemDisplayModel(
-                tab = HomeTab.Menu,
-                selected = false,
-            ),
-        ),
-    ),
-)
-
 /**
  * A composition local provider for [AppState] allows us to
  * access app wide navigation data from within any subscreen that

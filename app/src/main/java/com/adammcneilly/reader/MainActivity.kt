@@ -9,8 +9,6 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import com.adammcneilly.reader.core.app.AppState
 import com.adammcneilly.reader.core.app.AppStateData
-import com.adammcneilly.reader.core.app.HomeTab
-import com.adammcneilly.reader.core.displaymodels.NavigationItemDisplayModel
 import com.adammcneilly.reader.core.ui.scaffold.App
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,17 +33,8 @@ class MainActivity : ComponentActivity() {
             )
 
             val appState = rememberSaveable(saver = appSaver) {
-                val initialTabs = HomeTab.entries.map { tab ->
-                    NavigationItemDisplayModel(
-                        tab = tab,
-                        selected = (tab == HomeTab.Home),
-                    )
-                }
-
                 AppState(
-                    initialData = AppStateData(
-                        navItems = initialTabs,
-                    ),
+                    initialData = AppStateData(),
                 )
             }
 

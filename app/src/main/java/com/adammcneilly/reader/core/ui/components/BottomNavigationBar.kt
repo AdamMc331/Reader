@@ -9,8 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import com.adammcneilly.reader.core.app.AppState
+import com.adammcneilly.reader.core.app.AppStateData
 import com.adammcneilly.reader.core.app.LocalAppState
-import com.adammcneilly.reader.core.app.previewAppState
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 
 @Composable
@@ -45,7 +46,7 @@ fun BottomNavigationBar(
 private fun BottomNavigationBarPreview() {
     ReaderTheme {
         CompositionLocalProvider(
-            LocalAppState provides previewAppState,
+            LocalAppState provides AppState(AppStateData()),
         ) {
             BottomNavigationBar()
         }
