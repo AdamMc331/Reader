@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.google.dagger.hilt)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -56,9 +57,11 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.adaptive.android)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.room.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.okhttp)

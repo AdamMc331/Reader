@@ -22,11 +22,13 @@ loggingInterceptor = "4.12.0"
 material = "1.12.0"
 minSdk = "23"
 moshi = "1.15.2"
+navigationCompose = "2.9.0"
 paparazzi = "2.0.0-alpha01"
 retrofit = "3.0.0"
 room = "2.7.1"
 sortDependencies = "0.14"
 testParameterInjector = "1.18"
+adaptiveAndroid = "1.1.0"
 
 [libraries]
 android-material = { module = "com.google.android.material:material", version.ref = "material" }
@@ -34,6 +36,7 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "ktxCore" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
@@ -64,6 +67,7 @@ square-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref 
 square-moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 square-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 square-retrofit-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit"}
+androidx-adaptive-android = { group = "androidx.compose.material3.adaptive", name = "adaptive-android", version.ref = "adaptiveAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -74,6 +78,7 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektGradlePlugin
 google-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 square-sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }
 
