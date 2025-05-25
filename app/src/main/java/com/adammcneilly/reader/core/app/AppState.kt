@@ -1,26 +1,41 @@
 package com.adammcneilly.reader.core.app
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
+import android.os.Parcelable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.adammcneilly.reader.core.displaymodels.NavigationItemDisplayModel
+import kotlinx.parcelize.Parcelize
 
 val LocalAppState = staticCompositionLocalOf<AppState> {
     throw IllegalArgumentException("AppState must be provided in the app scaffolding.")
 }
 
-data class AppState(
-    private val mutableNavItems: MutableState<List<NavigationItemDisplayModel>>,
+@Parcelize
+data class AppStateData(
+    val navItems: List<NavigationItemDisplayModel>,
+) : Parcelable
+
+class AppState(
+    initialData: AppStateData,
 ) {
-    val navItems: State<List<NavigationItemDisplayModel>> = mutableNavItems
+    var navItems: List<NavigationItemDisplayModel> by mutableStateOf(initialData.navItems)
+        private set
 
     fun onNavItemSelected(
-        stack: AppStack,
+        tab: HomeTab,
     ) {
-        mutableNavItems.value = mutableNavItems.value.map { navItem ->
+        navItems = navItems.map { navItem ->
             navItem.copy(
-                selected = (navItem.stack == stack),
+                selected = (navItem.tab == tab),
             )
         }
+    }
+
+    fun toSaveableData(): AppStateData {
+        return AppStateData(
+            navItems = navItems,
+        )
     }
 }

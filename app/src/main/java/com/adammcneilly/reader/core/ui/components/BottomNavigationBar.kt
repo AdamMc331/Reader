@@ -19,16 +19,16 @@ fun BottomNavigationBar(
     NavigationBar(
         modifier = modifier,
     ) {
-        appState.navItems.value.forEach { item ->
+        appState.navItems.forEach { item ->
             NavigationBarItem(
                 selected = item.selected,
                 onClick = {
-                    appState.onNavItemSelected(item.stack)
+                    appState.onNavItemSelected(item.tab)
                 },
                 icon = {
                     Icon(
-                        imageVector = item.stack.icon,
-                        contentDescription = stringResource(item.stack.titleRes),
+                        imageVector = item.tab.icon,
+                        contentDescription = stringResource(item.tab.titleRes),
                     )
                 },
             )

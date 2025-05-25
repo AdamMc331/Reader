@@ -5,19 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.animation.SharedTransitionLayout
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.adammcneilly.reader.core.app.AppStack
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import com.adammcneilly.reader.core.app.AppState
-import com.adammcneilly.reader.core.app.LocalAppState
+import com.adammcneilly.reader.core.app.AppStateData
+import com.adammcneilly.reader.core.app.HomeTab
 import com.adammcneilly.reader.core.displaymodels.NavigationItemDisplayModel
-import com.adammcneilly.reader.core.ui.theme.ReaderTheme
-import com.adammcneilly.reader.screens.search.SearchScreen
+import com.adammcneilly.reader.core.ui.scaffold.App
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,40 +26,33 @@ class MainActivity : ComponentActivity() {
         setContent {
             enableEdgeToEdge()
 
-            val navController = rememberNavController()
+            val appSaver = Saver<AppState, AppStateData>(
+                save = { appState ->
+                    appState.toSaveableData()
+                },
+                restore = { appStateData ->
+                    AppState(appStateData)
+                },
+            )
 
-            ReaderTheme {
-                val initialTabs = AppStack.entries.map {
+            val appState = rememberSaveable(saver = appSaver) {
+                val initialTabs = HomeTab.entries.map { tab ->
                     NavigationItemDisplayModel(
-                        stack = it,
-                        selected = (it == AppStack.Home),
+                        tab = tab,
+                        selected = (tab == HomeTab.Home),
                     )
                 }
 
-                val initialAppState = AppState(
-                    mutableNavItems = remember {
-                        mutableStateOf(initialTabs)
-                    },
+                AppState(
+                    initialData = AppStateData(
+                        navItems = initialTabs,
+                    ),
                 )
-
-                CompositionLocalProvider(
-                    LocalAppState provides initialAppState,
-                ) {
-                    SharedTransitionLayout {
-                        NavHost(
-                            navController = navController,
-                            startDestination = "search",
-                        ) {
-                            composable("search") {
-                                SearchScreen(
-                                    animatedVisibilityScope = this@composable,
-                                    sharedTransitionScope = this@SharedTransitionLayout,
-                                )
-                            }
-                        }
-                    }
-                }
             }
+
+            App(
+                appState = appState,
+            )
         }
     }
 }

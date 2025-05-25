@@ -8,7 +8,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.adammcneilly.reader.R
 
-enum class AppStack(
+enum class HomeTab(
     val titleRes: Int,
     val icon: ImageVector,
 ) {

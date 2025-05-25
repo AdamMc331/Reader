@@ -1,8 +1,11 @@
 package com.adammcneilly.reader.core.displaymodels
 
-import com.adammcneilly.reader.core.app.AppStack
+import android.os.Parcelable
+import com.adammcneilly.reader.core.app.HomeTab
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class NavigationItemDisplayModel(
-    val stack: AppStack,
+    val tab: HomeTab,
     val selected: Boolean,
-)
+) : Parcelable
