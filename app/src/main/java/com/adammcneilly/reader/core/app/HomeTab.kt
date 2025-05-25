@@ -13,22 +13,27 @@ import com.adammcneilly.reader.R
  * on a navigation menu.
  */
 enum class HomeTab(
+    val route: String,
     val titleRes: Int,
     val icon: ImageVector,
 ) {
     Home(
+        route = "home",
         titleRes = R.string.home,
         icon = Icons.Default.Home,
     ),
     Search(
+        route = "search",
         titleRes = R.string.search,
         icon = Icons.Default.Search,
     ),
     Account(
+        route = "account",
         titleRes = R.string.account,
         icon = Icons.Default.AccountCircle,
     ),
     Menu(
+        route = "menu",
         titleRes = R.string.menu,
         icon = Icons.Default.Menu,
     ),
