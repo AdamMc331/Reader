@@ -6,9 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.adammcneilly.reader.core.app.AppStack
+import com.adammcneilly.reader.core.app.AppState
+import com.adammcneilly.reader.core.app.LocalAppState
+import com.adammcneilly.reader.core.displaymodels.NavigationItemDisplayModel
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 import com.adammcneilly.reader.screens.search.SearchScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,16 +34,33 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             ReaderTheme {
-                SharedTransitionLayout {
-                    NavHost(
-                        navController = navController,
-                        startDestination = "search",
-                    ) {
-                        composable("search") {
-                            SearchScreen(
-                                animatedVisibilityScope = this@composable,
-                                sharedTransitionScope = this@SharedTransitionLayout,
-                            )
+                val initialTabs = AppStack.entries.map {
+                    NavigationItemDisplayModel(
+                        stack = it,
+                        selected = (it == AppStack.Home),
+                    )
+                }
+
+                val initialAppState = AppState(
+                    mutableNavItems = remember {
+                        mutableStateOf(initialTabs)
+                    },
+                )
+
+                CompositionLocalProvider(
+                    LocalAppState provides initialAppState,
+                ) {
+                    SharedTransitionLayout {
+                        NavHost(
+                            navController = navController,
+                            startDestination = "search",
+                        ) {
+                            composable("search") {
+                                SearchScreen(
+                                    animatedVisibilityScope = this@composable,
+                                    sharedTransitionScope = this@SharedTransitionLayout,
+                                )
+                            }
                         }
                     }
                 }

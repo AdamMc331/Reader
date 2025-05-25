@@ -1,9 +1,8 @@
 package com.adammcneilly.reader.core.displaymodels
 
-import androidx.compose.ui.graphics.vector.ImageVector
+import com.adammcneilly.reader.core.app.AppStack
 
 data class NavigationItemDisplayModel(
-    val icon: ImageVector,
-    val labelRes: Int,
+    val stack: AppStack,
     val selected: Boolean,
 )
