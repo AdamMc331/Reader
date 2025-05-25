@@ -48,6 +48,12 @@ class AppState(
     var navItems: List<NavigationItemDisplayModel> by mutableStateOf(initialData.navItems)
         private set
 
+    val currentSelectedTab: HomeTab?
+        get() = navItems
+            .firstOrNull { navItem ->
+                navItem.selected
+            }?.tab
+
     fun onNavItemSelected(
         tab: HomeTab,
     ) {
