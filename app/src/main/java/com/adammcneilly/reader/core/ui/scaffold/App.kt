@@ -41,7 +41,6 @@ fun App(
 @Composable
 @OptIn(ExperimentalSharedTransitionApi::class)
 private fun SharedTransitionScope.AppNavHost() {
-    // TODO: Mode this into separate setup
     val navController = rememberNavController()
 
     NavHost(
