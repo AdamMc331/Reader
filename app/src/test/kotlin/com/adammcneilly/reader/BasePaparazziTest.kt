@@ -5,9 +5,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.cash.paparazzi.Paparazzi
+import com.adammcneilly.reader.core.app.AppState
+import com.adammcneilly.reader.core.app.AppStateData
+import com.adammcneilly.reader.core.app.LocalAppState
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
 import com.google.testing.junit.testparameterinjector.TestParameter
 import com.google.testing.junit.testparameterinjector.TestParameterInjector
@@ -39,16 +43,20 @@ abstract class BasePaparazziTest {
                 darkTheme = useDarkTheme,
                 dynamicTheme = false,
             ) {
-                Surface(
-                    modifier = Modifier
-                        .fillMaxSize(),
+                CompositionLocalProvider(
+                    LocalAppState provides AppState(AppStateData()),
                 ) {
-                    Box(
+                    Surface(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(screenPaddingDp.dp),
+                            .fillMaxSize(),
                     ) {
-                        content()
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(screenPaddingDp.dp),
+                        ) {
+                            content()
+                        }
                     }
                 }
             }

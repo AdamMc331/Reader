@@ -4,14 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import com.adammcneilly.reader.core.ui.theme.ReaderTheme
-import com.adammcneilly.reader.screens.search.SearchScreen
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
+import com.adammcneilly.reader.core.app.AppState
+import com.adammcneilly.reader.core.app.AppStateData
+import com.adammcneilly.reader.core.ui.scaffold.App
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalSharedTransitionApi::class)
     override fun onCreate(
         savedInstanceState: Bundle?,
     ) {
@@ -20,13 +23,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             enableEdgeToEdge()
 
-            ReaderTheme {
-                Surface(
-                    color = MaterialTheme.colorScheme.background,
-                ) {
-                    SearchScreen()
-                }
+            val appSaver = Saver<AppState, AppStateData>(
+                save = { appState ->
+                    appState.toSaveableData()
+                },
+                restore = { appStateData ->
+                    AppState(appStateData)
+                },
+            )
+
+            val appState = rememberSaveable(saver = appSaver) {
+                AppState(
+                    initialData = AppStateData(),
+                )
             }
+
+            App(
+                appState = appState,
+            )
         }
     }
 }

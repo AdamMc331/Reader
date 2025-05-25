@@ -1,20 +1,41 @@
 package com.adammcneilly.reader.screens.search
 
+import androidx.compose.animation.AnimatedVisibilityScope
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.adammcneilly.reader.core.ui.scaffold.PersistentNavigationBar
+import com.adammcneilly.reader.core.ui.scaffold.PersistentNavigationRail
+import com.adammcneilly.reader.core.ui.scaffold.PersistentScaffold
+import com.adammcneilly.reader.core.ui.scaffold.rememberScaffoldState
 
 @Composable
+@OptIn(ExperimentalSharedTransitionApi::class)
 fun SearchScreen(
-    modifier: Modifier = Modifier,
+    animatedVisibilityScope: AnimatedVisibilityScope,
+    sharedTransitionScope: SharedTransitionScope,
     viewModel: SearchViewModel = hiltViewModel(),
 ) {
-    val state = viewModel.state.collectAsState()
+    rememberScaffoldState(
+        animatedVisibilityScope,
+        sharedTransitionScope,
+    ).PersistentScaffold(
+        navigationBar = {
+            PersistentNavigationBar()
+        },
+        navigationRail = {
+            PersistentNavigationRail()
+        },
+        content = { paddingValues ->
+            val state = viewModel.state.collectAsState()
 
-    SearchContent(
-        state = state.value,
-        onEvent = viewModel::onEvent,
-        modifier = modifier,
+            SearchContent(
+                state = state.value,
+                onEvent = viewModel::onEvent,
+                contentPadding = paddingValues,
+            )
+        },
     )
 }

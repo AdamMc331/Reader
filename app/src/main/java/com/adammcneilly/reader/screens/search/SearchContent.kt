@@ -26,10 +26,12 @@ import com.adammcneilly.reader.core.displaymodels.BookDisplayModel
 import com.adammcneilly.reader.core.displaymodels.ImageDisplayModel
 import com.adammcneilly.reader.core.ui.components.BookOverviewCard
 import com.adammcneilly.reader.core.ui.theme.ReaderTheme
+import com.adammcneilly.reader.core.ui.utils.plus
 
 @Composable
 fun SearchContent(
     state: SearchState,
+    contentPadding: PaddingValues,
     onEvent: (SearchEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -38,7 +40,7 @@ fun SearchContent(
             .fillMaxSize(),
     ) {
         LazyColumn(
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(16.dp).plus(contentPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             item {
@@ -117,6 +119,7 @@ private fun SearchContentPreview(
         SearchContent(
             state = searchState,
             onEvent = {},
+            contentPadding = PaddingValues(),
         )
     }
 }
