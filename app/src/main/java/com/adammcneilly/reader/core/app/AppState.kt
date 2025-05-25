@@ -48,7 +48,18 @@ val LocalAppState = staticCompositionLocalOf<AppState> {
 @Parcelize
 data class AppStateData(
     val navItems: List<NavigationItemDisplayModel>,
-) : Parcelable
+) : Parcelable {
+    constructor(
+        selectedTab: HomeTab = HomeTab.Home,
+    ) : this(
+        navItems = HomeTab.entries.map { tab ->
+            NavigationItemDisplayModel(
+                tab = tab,
+                selected = (tab == selectedTab),
+            )
+        },
+    )
+}
 
 /**
  * The application state container, it's main purpose to expose the
