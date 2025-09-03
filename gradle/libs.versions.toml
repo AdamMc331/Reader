@@ -26,7 +26,7 @@ navigationCompose = "2.9.3"
 paparazzi = "2.0.0-alpha02"
 retrofit = "3.0.0"
 room = "2.7.2"
-sortDependencies = "0.14"
+sortDependencies = "0.15"
 testParameterInjector = "1.18"
 adaptiveAndroid = "1.1.0"
 
