@@ -27,7 +27,7 @@ paparazzi = "2.0.0-alpha02"
 retrofit = "3.0.0"
 room = "2.8.0"
 sortDependencies = "0.15"
-testParameterInjector = "1.18"
+testParameterInjector = "1.19"
 adaptiveAndroid = "1.1.0"
 
 [libraries]
